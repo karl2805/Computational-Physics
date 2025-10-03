@@ -2,7 +2,7 @@
     #include <iostream>
     #include <cmath>
 
-    \\test comment github
+   
 
     double Integrate(double (*F)(double), double lower_bound, double upper_bound, double n)
     {
@@ -33,10 +33,9 @@
 
         std::cout << "n" << std::setw(30) << "Approximate Integral" << std::setw(30) << "% True Error\n\n"; 
 
-        for (int n = 4; n <= 64; n *= 2)
+        for (int n = 2; n <= 64; n *= 2)
         {   
             double approx = Integrate(F, 0, 10, n);
             std::cout << n << std::setw(30) << approx << std::setw(30) << (std::abs(true_value - approx) / true_value) * 100 << " %\n";
         }
-        
     }
