@@ -2,7 +2,7 @@
     #include <iostream>
     #include <cmath>
 
-    \\test comment github
+  
 
     double Integrate(double (*F)(double), double lower_bound, double upper_bound, double n)
     {
