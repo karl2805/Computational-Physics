@@ -29,13 +29,13 @@
         double true_value = 246.590293505238;
 
         
-        std::cout << "Approximation of Integral of f(x) from 0 to 10 with n segments: \n\n";
+        std::cout << "Approximation of Integral of f(x) from 0 to 10 with n segments: \n";
 
-        std::cout << "n" << std::setw(30) << "Approximate Integral" << std::setw(30) << "% True Error\n\n"; 
+        std::cout << "n" << '\t' << "Approx. Integral" << '\t' << "% True Error\n\n"; 
 
         for (int n = 2; n <= 64; n *= 2)
         {   
             double approx = Integrate(F, 0, 10, n);
-            std::cout << n << std::setw(30) << approx << std::setw(30) << (std::abs(true_value - approx) / true_value) * 100 << " %\n";
+            std::cout << n << '\t' << approx << std::setw(25) << (std::abs(true_value - approx) / true_value) * 100 << " %\n";
         }
     }
