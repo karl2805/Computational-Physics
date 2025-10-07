@@ -1,0 +1,5 @@
+1. A program is a set of written istructions for a computer to execute. 
+
+2. A compiler takes code written in a human friendly format such as c++ code and converts it into assembly instructions for the computer to understand and execute.
+
+3. A variable is a container which stores a number known as its value. One can change and update the value of a varibale.
