@@ -30,9 +30,21 @@ int main()
 
     std::cout << std::left << 0.125 << '\t' << dir << '\t' << std::abs(3 - dir) / 3 << std::endl;
 
+    LINEBREAK;
+    std::cout << "The Abs true error will always be zero no matter how large del_x is:\n";
+    LINEBREAK;
 
-  
+    std::cout << std::left << "del_x" << "\t" << "f'(2)" << '\t' << "Abs true error" << std::endl;
 
-    
-    
+    for (double i = 2; i <= 10; i += 2)
+    {
+        dir = CentralDifferentiate(2, i, f);
+        
+        std::cout << std::left << i << '\t' << dir << '\t' << std::abs(3 - dir) / 3 << std::endl;
+    }
+
+    LINEBREAK;
+    std::cout << "Explained in canvas submission\n";
+    LINEBREAK;
+
 }

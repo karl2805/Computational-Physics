@@ -3,12 +3,12 @@
 #include <cmath>
 #include <vector>
 
- #define LINEBREAK std::cout << "------------------------------------------------------------------\n\n";
+ #define LINEBREAK std::cout << "------------------------------------------------------------------\n";
 
 
 
 int main ()
-{   
+{   //Part (a)
     std::cout << "Part (a):\n";
     std::cout << "First Approxation sin(x) = x: \n";
     double exact = 0, approx = 0, error = 0, x = 0;
@@ -25,6 +25,7 @@ int main ()
     std::cout << "First angle with error greater than 1%: " << x * (180/M_PI) << " degrees\n";
 
     LINEBREAK;
+    //Part (b)
 
     approx = x - ((std::pow(x, 3)) / 6);
     error = (std::abs(exact - approx) / exact);
@@ -33,6 +34,7 @@ int main ()
     std::cout << "Error with second term at angle " << x * (180/M_PI) << " degrees" << " = " << error * 100 << "%\n";
 
     LINEBREAK;
+    //Part (c)
 
     for (x = 0.0001; x <= 3; x += 0.0001)
     {
