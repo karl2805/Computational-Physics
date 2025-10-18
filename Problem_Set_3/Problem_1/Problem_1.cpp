@@ -26,7 +26,6 @@ double BisectionMethod(double (*F)(double), double x_a, double x_b, int iteratio
         return 0;
     }
         
-
     double x_l = x_a, x_u = x_b, x_m, product;
 
     for (int i = 0; i <= iterations; i++)
@@ -56,6 +55,7 @@ double BisectionMethod(double (*F)(double), double x_a, double x_b, int iteratio
     return x_m;
 
 }
+
 double SecantMethod(double (*F)(double), double x_i, double x_i_1, int iterations=10)
 {
     double xi = x_i, xi1 = x_i_1, next = 0;
