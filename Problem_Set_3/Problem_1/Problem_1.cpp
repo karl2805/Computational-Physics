@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cmath>
 #include <iomanip>
+#include <fstream>
+#include <vector>
 
 #define PI 3.14159265359
 #define LINEBREAK std::cout << "------------------------------------------------------------------\n";
@@ -98,6 +100,9 @@ double F(double x)
 
 int main()
 {
+    std::vector<double> bisect_data, secant_data, newtonrapson_data;
+    double true_error, rel_error, e_0;
+
     LINEBREAK;
     std::cout << "Bisection Method" << std::endl;
     LINEBREAK;
@@ -109,15 +114,24 @@ int main()
 
     double exact = 1.31811607165;
    
-    for (int i = 1; i <= 20; i++)
+    for (int i = 0; i <= 21; i++)
     {
-        
+        true_error = std::abs(BisectionMethod(F, 0, PI/2, i) - exact);
+        rel_error = std::abs(BisectionMethod(F, 0, PI/2, i) - exact) / exact;
+        e_0 = std::abs(BisectionMethod(F, 0, PI/2, 0) - exact);
+
         printElement(i);
-        printElement(std::abs(BisectionMethod(F, 0, PI/2, i) - exact));
-        printElement(std::abs(BisectionMethod(F, 0, PI/2, i) - exact) / exact);
+        printElement(true_error);
+        printElement(rel_error);
+
         std::cout << std::endl;
+
+        bisect_data.push_back(std::abs(true_error / e_0));
         
     }
+
+    
+
     std::cout << '\n';
     LINEBREAK;
     std::cout << "Secant Method" << std::endl;
@@ -128,12 +142,19 @@ int main()
     printElement("Abs_Approx_Error");
     std::cout << "\n\n";
 
-    for (int i = 1; i <= 20; i++)
+    for (int i = 0; i <= 21; i++)
     {
+        true_error = std::abs(SecantMethod(F, 0, PI/2, i) - exact);
+        rel_error = std::abs(SecantMethod(F, 0, PI/2, i) - exact) / exact;
+        e_0 = std::abs(SecantMethod(F, 0, PI/2, 0) - exact);
+
         printElement(i);
-        printElement(std::abs(SecantMethod(F, 0, PI/2, i) - exact));
-        printElement(std::abs(SecantMethod(F, 0, PI/2, i) - exact) / exact);
+        printElement(true_error);
+        printElement(rel_error);
         std::cout << std::endl;
+
+        secant_data.push_back(std::abs(true_error / e_0));
+        
     }
     std::cout << '\n';
     LINEBREAK;
@@ -142,15 +163,29 @@ int main()
 
     printElement("Iteration");
     printElement("Abs_True_Error");
-    printElement("Abs_Approx_Error");
+    printElement("Abs_Relative_True_Error");
     std::cout << "\n\n";
 
-    for (int i = 1; i <= 20; i++)
+    for (int i = 0; i <= 21; i++)
     {
+        true_error = std::abs(NewtonRaphsonMethod(F, PI/2, i) - exact);
+        rel_error = std::abs(NewtonRaphsonMethod(F, PI/2, i) - exact) / exact;
+        e_0 = std::abs(NewtonRaphsonMethod(F, PI/2, 0) - exact);
+
         printElement(i);
-        printElement(std::abs(NewtonRaphsonMethod(F, PI/2, i) - exact));
-        printElement(std::abs(NewtonRaphsonMethod(F, PI/2, i) - exact) / exact);
+        printElement(true_error);
+        printElement(rel_error);
         std::cout << std::endl;
+
+        newtonrapson_data.push_back(std::abs(true_error / e_0));
+    }
+
+    std::ofstream output("data.csv");
+    
+    output << "index" << ',' << "bisect" << ',' << "secant" << ',' << "newtonrapson" << std::endl;
+    for (int i = 0; i <= 21; i++)
+    {
+        output << i << ',' << bisect_data.at(i) << ',' << secant_data.at(i) << ',' << newtonrapson_data.at(i) << std::endl;
     }
   
 }
