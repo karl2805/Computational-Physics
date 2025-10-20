@@ -20,13 +20,13 @@ def U(T):
 
 def Cv(T):
     x = (hbar * omega) / (k_B * T)
-    return ( ((hbar * omega) / (k_B * T**2)) * np.exp(x) ) / ( (np.exp(x)) - 1)**2
+    return ( ((hbar**2 * omega**2) / (k_B * T**2)) * np.exp(x) ) / ( (np.exp(x)) - 1)**2
 
 def S(T):
     x = (hbar * omega) / (k_B * T)
     return (k_B*x) / (np.exp(-x) - 1) - np.log(1 - np.exp(-x))
 
-x = np.linspace(1,300,500000)
+x = np.linspace(1,500,500000)
 
 y=U(x)
 yCv = Cv(x)
