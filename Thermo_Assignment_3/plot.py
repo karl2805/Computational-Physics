@@ -8,11 +8,13 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 import numpy as np
 
 
-hbar = 1.054571817e-34  
-k_B  = 1.380649e-23     
+#hbar = 1.054571817e-34  
+#k_B  = 1.380649e-23     
+#omega = 1e13 
 
-
-omega = 1e13 
+hbar = 1 
+k_B  = 1   
+omega = 1
 
 def U(T):
     x = (hbar * omega) / (k_B * T)
@@ -24,9 +26,9 @@ def Cv(T):
 
 def S(T):
     x = (hbar * omega) / (k_B * T)
-    return (k_B*x) / (np.exp(-x) - 1) - np.log(1 - np.exp(-x))
+    return k_B * ( (x / (np.exp(x) - 1)) - np.log(1 - np.exp(-x)) )
 
-x = np.linspace(1,500,500000)
+x = np.linspace(0.001,500,50000)
 
 y=U(x)
 yCv = Cv(x)
@@ -50,13 +52,24 @@ ax[0].set_title('Internal Energy vs Temperature', fontsize=15)
 ax[1].set_title('Cv vs Temperature', fontsize=15)
 ax[2].set_title('Entropy vs Temperature', fontsize=15)
 
-ax[0].set_xlabel('Temperature (K)', fontsize=15)
-ax[1].set_xlabel('Temperature (K)', fontsize=15)
-ax[2].set_xlabel('Temperature (K)', fontsize=15)
+ax[0].set_xlabel('$k_{B}T \, (\\hbar\\omega)$', fontsize=15)
+ax[1].set_xlabel('$k_{B}T \, (\\hbar\\omega)$', fontsize=15)
+ax[2].set_xlabel('$k_{B}T \, (\\hbar\\omega)$', fontsize=15)
 
-ax[0].set_ylabel('Internal Energy (J)', fontsize=15)
-ax[1].set_ylabel('Cv (J/K)', fontsize=15)
-ax[2].set_ylabel('Entropy (J/K)', fontsize=15)
+ax[0].set_ylabel('U ($\\hbar\\omega$)', fontsize=15)
+ax[1].set_ylabel('Cv ($k_{B}$)', fontsize=15)
+ax[2].set_ylabel('Entropy ($k_{B}$)', fontsize=15)
+
+ax[0].set_xlim(0,10)
+ax[1].set_xlim(0,10)
+ax[2].set_xlim(0,10)
+
+ax[0].set_ylim(0,10)
+ax[1].set_ylim(0,1.1)
+ax[2].set_ylim(0,4)
+
+
+
 
 
 plt.show()
