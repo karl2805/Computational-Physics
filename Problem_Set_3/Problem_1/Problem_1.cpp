@@ -85,15 +85,17 @@ double NewtonRaphsonMethod(double (*F)(double), double x_i, int iterations=10)
         temp = x_i;
         x_i = temp - (F(temp)) / CD(temp, 0.01, F);
     }
-
     return x_i; 
-
-    
 }
 
 double F(double x)
 {
     return cos(x) - 0.25;
+}
+
+double G(double x)
+{
+    return (x-1)*(x-1)*(x-1);
 }
 
 
@@ -106,19 +108,21 @@ int main()
     LINEBREAK;
     std::cout << "Bisection Method" << std::endl;
     LINEBREAK;
+
     
     printElement("Iteration");
     printElement("Abs_True_Error");
-    printElement("Abs_Approx_Error");
+    printElement("Abs_Relative_True_Error");
     std::cout << "\n\n";
 
     double exact = 1.31811607165;
    
-    for (int i = 0; i <= 100; i++)
+   
+    for (int i = 0; i < 21; i++)
     {
         true_error = std::abs(BisectionMethod(F, 0, PI/2, i) - exact);
         rel_error = std::abs(BisectionMethod(F, 0, PI/2, i) - exact) / exact;
-        e_0 = std::abs(BisectionMethod(F, 0, PI/2, 0) - exact);
+        //e_0 = std::abs(BisectionMethod(F, 0, PI/2, 0) - exact);
 
         printElement(i);
         printElement(true_error);
@@ -126,7 +130,7 @@ int main()
 
         std::cout << std::endl;
 
-        bisect_data.push_back(std::abs(true_error / e_0));
+      
         
     }
 
@@ -139,21 +143,23 @@ int main()
 
     printElement("Iteration");
     printElement("Abs_True_Error");
-    printElement("Abs_Approx_Error");
+    printElement("Abs_Relative_True_Error");
     std::cout << "\n\n";
 
-    for (int i = 0; i <= 100; i++)
+    for (int i = 0; i < 21; i++)
     {
         true_error = std::abs(SecantMethod(F, 0, PI/2, i) - exact);
         rel_error = std::abs(SecantMethod(F, 0, PI/2, i) - exact) / exact;
-        e_0 = std::abs(SecantMethod(F, 0, PI/2, 0) - exact);
+       
+
+        //e_0 = std::abs(SecantMethod(F, 0, PI/2, 0) - exact);
 
         printElement(i);
         printElement(true_error);
         printElement(rel_error);
         std::cout << std::endl;
 
-        secant_data.push_back(std::abs(true_error / e_0));
+      
         
     }
     std::cout << '\n';
@@ -166,24 +172,55 @@ int main()
     printElement("Abs_Relative_True_Error");
     std::cout << "\n\n";
 
-    for (int i = 0; i <= 100; i++)
+    for (int i = 0; i < 21; i++)
     {
         true_error = std::abs(NewtonRaphsonMethod(F, PI/2, i) - exact);
         rel_error = std::abs(NewtonRaphsonMethod(F, PI/2, i) - exact) / exact;
-        e_0 = std::abs(NewtonRaphsonMethod(F, PI/2, 0) - exact);
+        //e_0 = std::abs(NewtonRaphsonMethod(F, PI/2, 0) - exact);
 
         printElement(i);
         printElement(true_error);
         printElement(rel_error);
         std::cout << std::endl;
 
-        newtonrapson_data.push_back(std::abs(true_error / e_0));
+      
     }
+
+    //Part (c) ----------------------------------------------------------------------
+    int iterations = 50;
+    e_0 = PI/2 - exact;
+
+    for (int i = 0; i < iterations; i++)
+        {
+            true_error = std::abs(BisectionMethod(F, 0, PI/2, i) - exact);
+            rel_error = std::abs(BisectionMethod(F, 0, PI/2, i) - exact) / exact;
+        
+            bisect_data.push_back(std::abs(true_error / e_0));
+
+        }
+
+    for (int i = 0; i < iterations; i++)
+        {
+            true_error = std::abs(SecantMethod(F, 0, PI/2, i) - exact);
+            rel_error = std::abs(SecantMethod(F, 0, PI/2, i) - exact) / exact;
+        
+            secant_data.push_back(std::abs(true_error / e_0));
+
+        }
+
+    for (int i = 0; i < iterations; i++)
+        {
+            true_error = std::abs(NewtonRaphsonMethod(F, PI/2, i) - exact);
+            rel_error = std::abs(NewtonRaphsonMethod(F, PI/2, i) - exact) / exact;
+
+            newtonrapson_data.push_back(std::abs(true_error / e_0));
+        }
+
 
     std::ofstream output("data.csv");
     
     output << "index" << ',' << "bisect" << ',' << "secant" << ',' << "newtonrapson" << std::endl;
-    for (int i = 0; i <= 100; i++)
+    for (int i = 0; i < bisect_data.size(); i++)
     {
         output << i << ',' << bisect_data.at(i) << ',' << secant_data.at(i) << ',' << newtonrapson_data.at(i) << std::endl;
     }

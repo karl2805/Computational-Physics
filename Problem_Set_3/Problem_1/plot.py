@@ -18,7 +18,7 @@ ax.plot(x,y1, label='Secant')
 ax.plot(x,y2, label='Newton-Rapson')
 
 ax.set_xlabel('Iterations', fontsize=20)
-ax.set_ylabel('$|\\frac{\\in_{n}}{\\in_{0}}|$', fontsize=20)
+ax.set_ylabel('$\log_{10}\left(|\\frac{\\in_{n}}{\\in_{0}}|\\right)$', fontsize=20)
 ax.set_yscale('log', base=10)
 ax.legend(fontsize=20)
 plt.show()
