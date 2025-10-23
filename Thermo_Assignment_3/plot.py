@@ -52,13 +52,14 @@ ax[0].set_title('Internal Energy vs Temperature', fontsize=15)
 ax[1].set_title('Cv vs Temperature', fontsize=15)
 ax[2].set_title('Entropy vs Temperature', fontsize=15)
 
-ax[0].set_xlabel('$k_{B}T \, (\\hbar\\omega)$', fontsize=15)
-ax[1].set_xlabel('$k_{B}T \, (\\hbar\\omega)$', fontsize=15)
-ax[2].set_xlabel('$k_{B}T \, (\\hbar\\omega)$', fontsize=15)
 
-ax[0].set_ylabel('U ($\\hbar\\omega$)', fontsize=15)
-ax[1].set_ylabel('Cv ($k_{B}$)', fontsize=15)
-ax[2].set_ylabel('Entropy ($k_{B}$)', fontsize=15)
+ax[0].set_xlabel('$T \\, k_{B}  / \\hbar\\omega$', fontsize=15)
+ax[1].set_xlabel('$T \\, k_{B}  / \\hbar\\omega$', fontsize=15)
+ax[2].set_xlabel('$T \\, k_{B}  / \\hbar\\omega$', fontsize=15)
+
+ax[0].set_ylabel('U / $\\hbar\\omega$', fontsize=15)
+ax[1].set_ylabel('Cv / $k_{B}$', fontsize=15)
+ax[2].set_ylabel('S / $k_{B}$', fontsize=15)
 
 ax[0].set_xlim(0,10)
 ax[1].set_xlim(0,10)
