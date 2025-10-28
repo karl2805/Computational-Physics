@@ -95,7 +95,7 @@ double F(double x)
 
 double G(double x)
 {
-    return (x-1)*(x-1)*(x-1);
+    return x*x*x-6*x*x-x+10;
 }
 
 
@@ -159,8 +159,6 @@ int main()
         printElement(rel_error);
         std::cout << std::endl;
 
-      
-        
     }
     std::cout << '\n';
     LINEBREAK;
@@ -224,5 +222,6 @@ int main()
     {
         output << i << ',' << bisect_data.at(i) << ',' << secant_data.at(i) << ',' << newtonrapson_data.at(i) << std::endl;
     }
+
   
 }
