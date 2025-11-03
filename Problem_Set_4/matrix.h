@@ -4,8 +4,16 @@
 #include <iomanip>
 typedef std::vector<std::vector<double>> MAT2D;
 typedef std::vector<double> VEC;
-//operator overloading 
 
+//helper fuction
+void swap(VEC& input, int i, int j)
+{
+    double temp = input.at(i);
+    input.at(i) = input.at(j);
+    input.at(j) = temp;
+}
+
+//operator overloading
 VEC operator+(VEC a, VEC b)
 {
     VEC result;
@@ -41,12 +49,17 @@ VEC operator*(double b, VEC a)
 
     return result;
 }
+
 class Matrix
 {
 protected:
     MAT2D matrix;
+    
+    //the multipliers used in finding upper triangular matrix to use to find the lower triangular matrix
+    
 
 public:
+    VEC multies;
 
     Matrix(MAT2D input) : matrix(input) {};
 
@@ -60,29 +73,25 @@ public:
 
     void SetRow(int row, VEC input);
 
+    void SetIndex(double value, int i, int j) { matrix[i][j] = value; }
+
     Matrix GaussPivotElim();
 
     VEC BackSubstitution();
 
     double Determinant();
 
+    Matrix UpperTriangular();
+
+    Matrix LowerTriangular();
+
+       
     //returns a vector of the the specified row
     VEC row(int row);
     
-    double no_rows()
-    {
-        return this->matrix.size();
-    }
-
-    double no_columns()
-    {
-        return this->matrix.at(0).size() - 1;
-    }
-
-    double at(int i, int j)
-    {
-        return this->matrix[i][j];
-    }
+    double no_rows(){ return this->matrix.size(); }
+    double no_columns(){ return this->matrix.at(0).size() - 1; }
+    double at(int i, int j){ return this->matrix[i][j];}
 };
 
 //this returns the row index of the maximum element below a specified matrix coordinate
@@ -175,25 +184,36 @@ Matrix Matrix::GaussPivotElim()
 
 }
 
+
+
 VEC Matrix::BackSubstitution()
 {
     Matrix& mat = *this;
 
-    VEC result;
+    int last_row_index = mat.no_rows() - 1;
+    int last_column_index = mat.no_columns() - 1;
 
-    double x1, x2, x3, x4;
+    VEC solutions;
 
-    x4 = mat.at(3, 4) / mat.at(3, 3);
+    for (int i = 0; i <= last_row_index; i++)
+    {
+        solutions.push_back(0);
+    }
 
-    x3 = (mat.at(2, 4) - x4 * mat.at(2, 3)) / mat.at(2, 2);
+    solutions.at(last_row_index) = mat.at(last_row_index, last_column_index + 1) / mat.at(last_row_index, last_column_index);
 
-    x2 = (mat.at(1, 4) - x4 * mat.at(1, 3) - x3 * mat.at(1,2)) / mat.at(1, 1);
+    for (int i = last_row_index - 1; i >= 0; i--)
+    {
+        double sum = 0;
 
-    x1 = (mat.at(0, 4) - x4 * mat.at(0, 3) - x3 * mat.at(0,2) - x2 * mat.at(0,1)) / mat.at(0, 0);
+        for (int j = i + 1; j <= last_row_index; j++)
+            sum += mat.at(i, j) * solutions.at(j);
 
-    result = { x1, x2, x3, x4 };
+        solutions.at(i) = (mat.at(i, last_column_index + 1) - sum) / mat.at(i, i);
+    }
 
-    return result;
+    return solutions;
+
 }
 
 double Matrix::Determinant()
@@ -210,6 +230,101 @@ double Matrix::Determinant()
     double result = (mat.negative_determinant) ? -determinant : determinant;
 
     return result;
+}
+
+Matrix Matrix::UpperTriangular()
+{
+    Matrix& mat = *this;
+    int pivot_row = 0;
+
+    
+
+    for (int k = 0; k < mat.no_columns(); k++)
+    {
+        //initialise the mulites vector of matrix class
+      
+       
+        //performing the pivoting
+        if (mat.MaxColumnIndex(pivot_row, k) != pivot_row)
+        {
+            mat.SwitchRows(pivot_row, mat.MaxColumnIndex(pivot_row, k));
+
+            //swap the stored multipliers also
+            swap(mat.multies, pivot_row, mat.MaxColumnIndex(pivot_row, k));
+        }
+
+        for (int j = pivot_row; j < mat.no_rows() - 1; j++)
+        {
+            double multiplier = (mat.at(j + 1, k)) / mat.at(pivot_row, k);
+
+            //save the multipler to use later for lower triangular matrix
+            mat.multies.push_back(multiplier);
+
+            VEC temp = multiplier * mat.row(pivot_row);
+            VEC newrow = temp - mat.row(j + 1);
+            mat.SetRow(j + 1, newrow);
+        }
+
+        pivot_row++;
+    }
+
+    return mat;
+}
+
+
+
+
+Matrix Matrix::LowerTriangular()
+{
+    VEC columns;
+    VEC rows;
+
+    //make a new zero matrix of the size of the class matrix
+
+    for (int i = 0; i < this->no_rows(); i++)
+    {
+        rows.push_back(0);
+    }
+
+    for (int i = 0; i < this->no_columns(); i++)
+    {
+        columns.push_back(0);
+    }
+
+    MAT2D mat0;
+
+    for (int i = 0; i < this->no_rows(); i++)
+        mat0.push_back(rows);
+    
+    //set the new zero matrix to the class matrix
+    this->matrix = mat0;
+
+    Matrix& mat = *this;
+
+    int last_row_index = mat.no_rows() - 1;
+    int last_column_index = mat.no_columns();
+
+    //to record the current index of the mulites being read
+    int multies_index = 0;
+
+    int i = 0;
+
+    for (int j = 0; j <= last_column_index; j++)
+    {
+        
+            mat.SetIndex(1, i, j);
+
+            for (int k = i + 1; k <= last_row_index; k++)
+            {
+                mat.SetIndex(multies.at(multies_index), k, j);
+                multies_index++;
+            }
+            i++;
+    }
+
+
+    return mat;
+
 }
 
 

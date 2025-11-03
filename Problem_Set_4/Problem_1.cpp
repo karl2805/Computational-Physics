@@ -5,8 +5,6 @@
 
 #include "matrix.h"
 
-
-
 typedef std::vector<std::vector<double>> MAT2D;
 typedef std::vector<double> VEC;
 
@@ -34,14 +32,14 @@ int main()
     Matrix mat(matrix_augmented);
 
 
-    std::cout << "Original Matrix:" << std::endl;
+    std::cout << "Original Extended Matrix:" << std::endl;
     mat.Print();
 
     std::cout << "Upper Triangular Form: " << std::endl;
     mat.GaussPivotElim();
 
     mat.Print();
-    std::cout << "new b vector is the last column of the above matrix " << std::endl << std::endl;
+    std::cout << "b = " << "<" << mat.at(0,4) << ", " << mat.at(1, 4) << ", " << mat.at(2, 4) << ", " << mat.at(3, 4) << ">" << "\n\n";
 
     VEC test = mat.BackSubstitution();
 
@@ -50,13 +48,29 @@ int main()
     std::cout << "x1 = " << test.at(0) << std::endl;
     std::cout << "x2 = " << test.at(1) << std::endl;
     std::cout << "x3 = " << test.at(2) << std::endl;
-    std::cout << "x4 = " << test.at(3) << std::endl;
+    std::cout << "x4 = " << test.at(3) << "\n\n";
 
-    std::cout << "Determinant = " << mat.Determinant() << std::endl;
-
-
+    std::cout << "Determinant = " << mat.Determinant() << "\n\n";
 
 
+
+    Matrix mat2(matrix);
+
+    mat2.UpperTriangular();
+
+    mat2.Print();
+
+    VEC test4 = mat2.multies;
+
+    mat2.LowerTriangular();
+
+    mat2.Print();
+
+
+
+
+
+  
 
 
 
