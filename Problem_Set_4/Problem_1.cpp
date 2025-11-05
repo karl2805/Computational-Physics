@@ -31,7 +31,7 @@ int main()
     std::cout << "Original Matrix" << "\n";
     mat.Print();
 
-    std::cout << "Upper Triangular Form: " << "\n";
+    std::cout << "Upper Triangular Form Augmented: " << "\n";
     mat.GaussPivotElim(b);
 
     mat.Print();
@@ -83,19 +83,15 @@ int main()
         std::cout << "x" << i + 1 << " = " << solutions.at(i) << "\n";
 
 
-    LINEBREAK;
 
 
 
-
-
-    //finding inverse. Each I1, I2... denotes a column of the inverse matrix I 
-    //Use the solution vector Z already found above
-
+        
     Matrix inverse(matrix);
-    
-    //VEC I1 = upper_triangular.ForwardSubstitution(Z);
-
+        
+        
+        
+    //finding inverse. Each I1, I2... denotes a column of the inverse matrix I 
     //Defining columns of the identity matrix ID
     VEC ID1 = { 1, 0, 0, 0 };
     VEC ID2 = { 0, 1, 0, 0 };
@@ -108,7 +104,6 @@ int main()
     VEC I2 = inverse.SolveMat(ID2);
     VEC I3 = inverse.SolveMat(ID3);
     VEC I4 = inverse.SolveMat(ID4);
-
 
     inverse.SetColumn(0, I1);
     inverse.SetColumn(1, I2);

@@ -161,7 +161,7 @@ void Matrix::Print() {
     // Traversing the 2D vector
     for (VEC& i : v) {
         for (double& j : i) {
-            std::cout << std::setw(10) << j;
+            std::cout << std::setw(12) << j;
         }
         std::cout << std::endl;
     }
