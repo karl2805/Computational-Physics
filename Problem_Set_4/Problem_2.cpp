@@ -33,8 +33,6 @@ int main()
 
         double pi_estimate = 4 * (counter / iterations);
 
-        
-
         double percent_error = (std::abs(pi_estimate - PI) / PI) * 100;
 
         outputfile << iterations << "," << percent_error << "\n";

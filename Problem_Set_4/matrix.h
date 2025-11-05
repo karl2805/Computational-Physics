@@ -13,8 +13,6 @@ void swap(VEC& input, int i, int j)
     input.at(j) = temp;
 }
 
-
-
 //operator overloading
 VEC operator+(VEC a, VEC b)
 {
@@ -53,9 +51,7 @@ VEC operator*(double b, VEC a)
 }
 
 class Matrix
-{
-protected:
-    
+{    
 public:
     MAT2D matrix;
     //the multipliers used in finding upper triangular matrix to use to find the lower triangular matrix
@@ -63,6 +59,7 @@ public:
 
     Matrix(MAT2D input) : matrix(input) {};
 
+    //this returns the row index of the maximum element below a specified matrix coordinate
     double MaxColumnIndex(int row, int column);
 
     void SwitchRows(int row1, int row2);
@@ -91,16 +88,13 @@ public:
 
     VEC SolveMat(VEC b);
     
-       
-    //returns a vector of the the specified row
-    VEC row(int row);
-    
+    VEC row(int row) {return this->matrix.at(row);} //returns the vector of the the specified row
     double no_rows(){ return this->matrix.size(); }
     double no_columns(){ return this->matrix.at(0).size() - 1; }
     double at(int i, int j){ return this->matrix[i][j];}
 };
 
-//this returns the row index of the maximum element below a specified matrix coordinate
+
 double Matrix::MaxColumnIndex(int row, int column)
 {
     MAT2D input = this->matrix;
@@ -146,15 +140,7 @@ void Matrix::SetColumn(int column, VEC input)
     {
         mat[i][column] = input.at(i);
     }
-
 }
-
-
-VEC Matrix::row(int row)
-{
-    return this->matrix.at(row);
-}
-
 
 void Matrix::Print() {
     MAT2D& v = this->matrix;
@@ -209,8 +195,6 @@ Matrix Matrix::GaussPivotElim(VEC b)
     return mat;
 
 }
-
-
 
 VEC Matrix::BackSubstitution(VEC b, bool append)
 {
@@ -297,8 +281,6 @@ VEC Matrix::SolveMat(VEC b)
 
     this->GaussPivotElim(b);
 
-    
-    
     VEC solution = this->BackSubstitution(b, false);
 
     this->matrix = temp;
@@ -350,13 +332,8 @@ Matrix Matrix::UpperTriangular()
         pivot_row++;
     }
 
-    
-
     return mat;
 }
-
-
-
 
 Matrix Matrix::LowerTriangular()
 {
@@ -406,7 +383,6 @@ Matrix Matrix::LowerTriangular()
             i++;
     }
 
-    
     return mat;
 }
 

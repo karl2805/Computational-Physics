@@ -11,7 +11,6 @@
 typedef std::vector<std::vector<double>> MAT2D;
 typedef std::vector<double> VEC;
 
-
 int main()
 {
   
@@ -49,7 +48,7 @@ int main()
 
     LINEBREAK
 
-     //----------------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------------
     //Part (b) ------------------------------------------------------------------------------------------------------------------\\
     //------------------------------------------------------------------------------------------------------------------------------
 
@@ -62,7 +61,6 @@ int main()
 
     std::cout << "Upper Triangular:" << "\n";
     upper_triangular.Print();
-
 
     std::cout << "Lower Triangular:" << "\n";
 
@@ -81,15 +79,8 @@ int main()
 
     for (int i = 0; i < solutions.size(); i++)
         std::cout << "x" << i + 1 << " = " << solutions.at(i) << "\n";
-
-
-
-
-
-        
+ 
     Matrix inverse(matrix);
-        
-        
         
     //finding inverse. Each I1, I2... denotes a column of the inverse matrix I 
     //Defining columns of the identity matrix ID
@@ -113,21 +104,5 @@ int main()
     std::cout << "\n" << "Inverse Matrix: " << "\n";
 
     inverse.Print();
-
-
-
-    
-   
-    
-
-    
-
-
-  
-
-
-
-
-
 
 }

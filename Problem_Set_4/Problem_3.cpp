@@ -26,13 +26,13 @@ int main ()
 
    
      double sum = 0;
-     for (int i = 0; i < 951; i++)
+     for (int i = 0; i < 100000; i++)
      {
          double x = distribution(generator);
          sum += F(x);
      }
 
-     std::cout << "Integral Value: " << (sum * (b-a)) / 951 << std::endl;
+     std::cout << "Integral Approximate Value: " << (sum * (b-a)) / 100000 << std::endl;
     
 
 
@@ -55,7 +55,6 @@ int main ()
             std::cout << "Number of points necessary for error less than 0.01%: " << num_points << " points" << std::endl;
             break;
         }
-
-        
     }
+    std::cout << "This number will always be different due to the randomness of this technique" << "\n";
 }
