@@ -13,6 +13,8 @@ void swap(VEC& input, int i, int j)
     input.at(j) = temp;
 }
 
+
+
 //operator overloading
 VEC operator+(VEC a, VEC b)
 {
@@ -53,12 +55,10 @@ VEC operator*(double b, VEC a)
 class Matrix
 {
 protected:
-    MAT2D matrix;
     
-    //the multipliers used in finding upper triangular matrix to use to find the lower triangular matrix
-    
-
 public:
+    MAT2D matrix;
+    //the multipliers used in finding upper triangular matrix to use to find the lower triangular matrix
     VEC multies;
 
     Matrix(MAT2D input) : matrix(input) {};
@@ -67,17 +67,21 @@ public:
 
     void SwitchRows(int row1, int row2);
 
-    bool negative_determinant = false;
+    int row_swap_count = 0;
 
     void Print();
 
     void SetRow(int row, VEC input);
 
+    void SetColumn(int column, VEC input);
+
     void SetIndex(double value, int i, int j) { matrix[i][j] = value; }
 
-    Matrix GaussPivotElim();
+    Matrix GaussPivotElim(VEC b);
 
-    VEC BackSubstitution();
+    VEC BackSubstitution(VEC b, bool append);
+
+    VEC ForwardSubstitution(VEC b);
 
     double Determinant();
 
@@ -85,6 +89,8 @@ public:
 
     Matrix LowerTriangular();
 
+    VEC SolveMat(VEC b);
+    
        
     //returns a vector of the the specified row
     VEC row(int row);
@@ -132,6 +138,18 @@ void Matrix::SetRow(int row, VEC input)
     this->matrix.at(row) = input;
 }
 
+void Matrix::SetColumn(int column, VEC input)
+{
+    MAT2D& mat = this->matrix;
+
+    for (int i = 0; i < mat.size(); i++)
+    {
+        mat[i][column] = input.at(i);
+    }
+
+}
+
+
 VEC Matrix::row(int row)
 {
     return this->matrix.at(row);
@@ -150,9 +168,17 @@ void Matrix::Print() {
     std::cout << std::endl;
 }
 
-Matrix Matrix::GaussPivotElim()
+Matrix Matrix::GaussPivotElim(VEC b)
 {
     Matrix& mat = *this;
+
+    //augement the input vector b to the end of the input matrix
+
+    for (int i = 0; i < mat.no_rows(); i++)
+    {
+        mat.matrix.at(i).push_back(b.at(i));
+    }
+
     double pivot_row = 0;
 
     for (int k = 0; k < mat.no_columns(); k++)
@@ -162,8 +188,8 @@ Matrix Matrix::GaussPivotElim()
         {
             mat.SwitchRows(pivot_row, mat.MaxColumnIndex(pivot_row, k));
 
-            //setting the determinant negative as a row exchange has occured
-            mat.negative_determinant = true;
+            //record the swap in the row swap counter in order to later determine the sign of the determinant
+            mat.row_swap_count++;
         }
 
         for (int j = pivot_row; j < mat.no_rows() - 1; j++)
@@ -172,7 +198,7 @@ Matrix Matrix::GaussPivotElim()
 
             VEC temp = multiplier * mat.row(pivot_row);
 
-            VEC newrow = temp - mat.row(j + 1);
+            VEC newrow = mat.row(j + 1) - multiplier * mat.row(pivot_row);
 
             mat.SetRow(j + 1, newrow);
         }
@@ -186,9 +212,20 @@ Matrix Matrix::GaussPivotElim()
 
 
 
-VEC Matrix::BackSubstitution()
+VEC Matrix::BackSubstitution(VEC b, bool append)
 {
     Matrix& mat = *this;
+
+    //augement the input vector b to the end of the matrix
+
+    if (append)
+    {
+        for (int i = 0; i < mat.no_rows(); i++)
+        {
+            mat.matrix.at(i).push_back(b.at(i));
+        }
+    }
+
 
     int last_row_index = mat.no_rows() - 1;
     int last_column_index = mat.no_columns() - 1;
@@ -216,6 +253,60 @@ VEC Matrix::BackSubstitution()
 
 }
 
+VEC Matrix::ForwardSubstitution(VEC b)
+{
+    Matrix& mat = *this;
+
+    //augement the input vector b to the end of the input matrix
+
+    for (int i = 0; i < mat.no_rows(); i++)
+    {
+        mat.matrix.at(i).push_back(b.at(i));
+    }
+
+    int last_row_index = mat.no_rows() - 1;
+    int last_column_index = mat.no_columns() - 1;
+
+    VEC solutions;
+
+    for (int i = 0; i <= last_row_index; i++)
+    {
+        solutions.push_back(0);
+    }
+
+    solutions.at(0) = mat.at(0, last_column_index + 1) / mat.at(0, 0);
+
+    for (int i = 1; i < mat.no_rows(); i++)
+    {
+        double sum = 0;
+
+        for (int j = 0; j <= last_column_index - 1; j++)
+            sum += mat.at(i, j) * solutions.at(j);
+
+        solutions.at(i) = (mat.at(i, last_column_index + 1) - sum) / mat.at(i, i);
+    }
+
+    return solutions;
+}
+
+VEC Matrix::SolveMat(VEC b)
+{
+    Matrix mat = *this;
+
+    MAT2D temp = this->matrix;
+
+    this->GaussPivotElim(b);
+
+    
+    
+    VEC solution = this->BackSubstitution(b, false);
+
+    this->matrix = temp;
+
+    return solution;
+
+}
+
 double Matrix::Determinant()
 {
     Matrix& mat = *this;
@@ -227,31 +318,22 @@ double Matrix::Determinant()
         determinant *= mat.at(i, i);
     }
 
-    double result = (mat.negative_determinant) ? -determinant : determinant;
+    //if row_swap_count is odd set negative determinant
+    double result = (mat.row_swap_count % 2 == 0) ? determinant : -determinant;
 
     return result;
 }
+
+
 
 Matrix Matrix::UpperTriangular()
 {
     Matrix& mat = *this;
     int pivot_row = 0;
 
-    
-
     for (int k = 0; k < mat.no_columns(); k++)
     {
-        //initialise the mulites vector of matrix class
       
-       
-        //performing the pivoting
-        if (mat.MaxColumnIndex(pivot_row, k) != pivot_row)
-        {
-            mat.SwitchRows(pivot_row, mat.MaxColumnIndex(pivot_row, k));
-
-            //swap the stored multipliers also
-            swap(mat.multies, pivot_row, mat.MaxColumnIndex(pivot_row, k));
-        }
 
         for (int j = pivot_row; j < mat.no_rows() - 1; j++)
         {
@@ -261,12 +343,14 @@ Matrix Matrix::UpperTriangular()
             mat.multies.push_back(multiplier);
 
             VEC temp = multiplier * mat.row(pivot_row);
-            VEC newrow = temp - mat.row(j + 1);
+            VEC newrow = mat.row(j + 1) - multiplier * mat.row(pivot_row);
             mat.SetRow(j + 1, newrow);
         }
 
         pivot_row++;
     }
+
+    
 
     return mat;
 }
@@ -322,10 +406,7 @@ Matrix Matrix::LowerTriangular()
             i++;
     }
 
-
+    
     return mat;
-
 }
-
-
 
