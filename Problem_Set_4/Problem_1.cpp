@@ -1,11 +1,12 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include <sstream>
+
+#include <iomanip>
 
 #include "matrix.h"
 
-#define LINEBREAK std::cout << "---------------------------------------------------------------------------------------------\n\n";
+#define LINEBREAK std::cout << "\n\n---------------------------------------------------------------------------------------------\n\n";
 
 typedef std::vector<std::vector<double>> MAT2D;
 typedef std::vector<double> VEC;
@@ -27,10 +28,10 @@ int main()
     
     VEC b = { 111, 118, 114, 163 };
 
-    std::cout << "Original Matrix" << std::endl;
+    std::cout << "Original Matrix" << "\n";
     mat.Print();
 
-    std::cout << "Upper Triangular Form: " << std::endl;
+    std::cout << "Upper Triangular Form: " << "\n";
     mat.GaussPivotElim(b);
 
     mat.Print();
@@ -42,9 +43,9 @@ int main()
 
     for (int i = 0; i < solutions.size(); i++)
         std::cout << "x" << i + 1 << " = " << solutions.at(i) << "\n";
-    std::cout << std::endl;
 
-    std::cout << "Determinant = " << mat.Determinant() << "\n\n";
+    std::cout << std::endl;
+    std::cout << "Determinant = " << mat.Determinant();
 
     LINEBREAK
 
