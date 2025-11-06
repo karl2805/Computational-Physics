@@ -11,10 +11,28 @@ std::default_random_engine generator(rd()); // rd() provides a random seed
 std::uniform_real_distribution<double> distribution(0,10);
 
 double number = distribution(generator);
+
 double F(double x)
 {
     return (300*x) / (1 + std::exp(x));
 }
+
+ double TrapesiumIntegrate(double (*F)(double), double lower_bound, double upper_bound, double n, bool return_step_size)
+    {
+        double h = (upper_bound - lower_bound) / (n);
+
+        double summation = 0;
+
+        for (int i = 0; i < n; i++)
+        {
+            summation += F((lower_bound) + (i * h));
+        }
+
+        if(return_step_size)
+            return h;
+
+        return (0.5 * h)*(F(lower_bound) + (2 * summation) + F(upper_bound));
+    }
 
 int main ()
 {
@@ -24,15 +42,17 @@ int main ()
     double b = 10;
     double true_value = 246.590293505238;
 
+    int iterations = 1000000;
+
    
      double sum = 0;
-     for (int i = 0; i < 100000; i++)
+     for (int i = 0; i < iterations; i++)
      {
          double x = distribution(generator);
          sum += F(x);
      }
 
-     std::cout << "Integral Approximate Value: " << (sum * (b-a)) / 100000 << std::endl;
+     std::cout << "Integral Value: " << (sum * (b-a)) / iterations << std::endl;
     
 
 
@@ -56,5 +76,21 @@ int main ()
             break;
         }
     }
-    std::cout << "This number will always be different due to the randomness of this technique" << "\n";
+
+    
+
+    for (double n = 1; n < 10000; n++)
+    {   
+        double approx = TrapesiumIntegrate(F, 0, 10, n, false);
+
+        double percent_error = (std::abs(true_value - approx) / true_value) * 100;
+
+        if (percent_error < 0.01)
+        {
+            std::cout << "Step size needed for trapezium rule error less than 0.01%: " << TrapesiumIntegrate(F, 0, 10, n, true) << std::endl; 
+            break;
+        }
+    }
+
+    
 }
