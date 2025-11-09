@@ -13,19 +13,6 @@ void swap(VEC& input, int i, int j)
     input.at(j) = temp;
 }
 
-//operator overloading
-VEC operator+(VEC a, VEC b)
-{
-    VEC result;
-
-    for (int i = 0; i < a.size(); i++)
-    {
-        result.push_back(a.at(i) + b.at(i));
-    }
-
-    return result;
-}
-
 VEC operator-(VEC a, VEC b)
 {
     VEC result;
@@ -51,13 +38,32 @@ VEC operator*(double b, VEC a)
 }
 
 class Matrix
-{    
+{
 public:
     MAT2D matrix;
     //the multipliers used in finding upper triangular matrix to use to find the lower triangular matrix
     VEC multies;
 
     Matrix(MAT2D input) : matrix(input) {};
+
+    //default constructor
+    Matrix() {};
+
+    //this constructor makes a zero matrix of a specified size
+    Matrix(int rows, int columns)
+    {
+        VEC temp;
+        //create an identity matrix of the size of the input L and U matricies
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < columns; j++)
+            {
+                temp.push_back(0);
+            }
+            this->matrix.push_back(temp);
+            temp.clear();
+        }
+    };
 
     //this returns the row index of the maximum element below a specified matrix coordinate
     double MaxColumnIndex(int row, int column);
@@ -87,11 +93,16 @@ public:
     Matrix LowerTriangular();
 
     VEC SolveMat(VEC b);
-    
-    VEC row(int row) {return this->matrix.at(row);} //returns the vector of the the specified row
-    double no_rows(){ return this->matrix.size(); }
-    double no_columns(){ return this->matrix.at(0).size() - 1; }
-    double at(int i, int j){ return this->matrix[i][j];}
+
+    Matrix InverseLU(Matrix& L, Matrix& U);
+
+    VEC row(int row) { return this->matrix.at(row); } //returns the vector of the the specified row
+
+    VEC get_column(int column);
+    double no_rows() { return this->matrix.size(); }
+    double no_column() { return this->matrix.at(0).size(); } //used for normal matrix
+    double no_columns() { return this->matrix.at(0).size() - 1; } //used for augmented matrix
+    double at(int i, int j) { return this->matrix[i][j]; }
 };
 
 
@@ -293,7 +304,7 @@ double Matrix::Determinant()
 {
     Matrix& mat = *this;
 
-    double determinant = mat.at(0,0);
+    double determinant = mat.at(0, 0);
 
     for (int i = 1; i < mat.no_rows(); i++)
     {
@@ -315,7 +326,7 @@ Matrix Matrix::UpperTriangular()
 
     for (int k = 0; k < mat.no_columns(); k++)
     {
-      
+
 
         for (int j = pivot_row; j < mat.no_rows() - 1; j++)
         {
@@ -356,7 +367,7 @@ Matrix Matrix::LowerTriangular()
 
     for (int i = 0; i < this->no_rows(); i++)
         mat0.push_back(rows);
-    
+
     //set the new zero matrix to the class matrix
     this->matrix = mat0;
 
@@ -372,17 +383,78 @@ Matrix Matrix::LowerTriangular()
 
     for (int j = 0; j <= last_column_index; j++)
     {
-        
-            mat.SetIndex(1, i, j);
 
-            for (int k = i + 1; k <= last_row_index; k++)
-            {
-                mat.SetIndex(multies.at(multies_index), k, j);
-                multies_index++;
-            }
-            i++;
+        mat.SetIndex(1, i, j);
+
+        for (int k = i + 1; k <= last_row_index; k++)
+        {
+            mat.SetIndex(multies.at(multies_index), k, j);
+            multies_index++;
+        }
+        i++;
     }
 
     return mat;
+}
+
+VEC Matrix::get_column(int column)
+{
+    VEC temp;
+
+    for (int row = 0; row < this->no_rows(); row++)
+    {
+        temp.push_back(this->matrix[row][column]);
+    }
+
+    return temp;
+}
+
+Matrix Matrix::InverseLU(Matrix& L, Matrix& U)
+{
+    Matrix identity;
+    VEC temp;
+
+    const Matrix saveL = L;
+    const Matrix saveU = U;
+
+    //create an identity matrix of the size of the input L and U matricies
+    for (int i = 0; i < L.no_rows(); i++)
+    {
+        for (int j = 0; j < L.no_column(); j++)
+        {
+            int fill = (i == j) ? 1 : 0;
+            temp.push_back(fill);
+        }
+        identity.matrix.push_back(temp);
+        temp.clear();
+    }
+
+    MAT2D inversecolumns;
+
+    //Solve using the L and U matricies for each column of the identity matrix
+    for (int i = 0; i < L.no_column(); i++)
+    {
+        VEC Z = L.ForwardSubstitution(identity.get_column(i));
+
+        VEC B = U.BackSubstitution(Z, true);
+
+        inversecolumns.push_back(B);
+
+        //revert L and U to what they were for the next iteration.
+        L = saveL;
+        U = saveU;
+    }
+
+    //use constructor to make new empty matrix the size of the L triangular matrix
+    Matrix inverse(L.no_rows() , L.no_column());
+
+    for (int i = 0; i < inversecolumns.size(); i++)
+    {
+        inverse.SetColumn(i, inversecolumns.at(i));
+    }
+    
+    
+    return inverse;
+
 }
 

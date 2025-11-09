@@ -1,0 +1,250 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper, total={7.5in, 10.5in}]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\usepackage{gensymb}
+\usepackage{caption}
+\usepackage[export]{adjustbox}
+\setlength\fboxsep{10pt}
+\setlength\fboxrule{1pt}
+\usepackage{wrapfig}
+\hbadness = 1000000000
+\usepackage{pythonhighlight}
+\setlength{\parindent}{0pt}
+\usepackage{booktabs}
+
+
+
+
+
+
+
+\begin{document}
+
+
+	\begin{titlepage}
+	\vspace*{\fill}
+	\begingroup
+	\centering
+	
+	\huge{Experiment 8 - Balmer Series of Hydrogen}\\
+	[1cm]
+	\textsc{\large Karl Riedewald 123377661}\\
+	\textsc{\large Lab Partner: Nico Brinzoni}\\
+	\textsc{\large Lab Group 203 Kane Building}\\
+	\textsc{\large Date: £££££££££££££££££}\\
+	
+	\vspace*{\fill}
+	
+	\endgroup
+\end{titlepage}
+\begin{center}
+	\textbf{Abstract}
+\end{center}
+
+\section{Introduction}
+The Balmer series is the name given to the series of spectral emission lines of the hydrogen atom. When electrons in the hydrogen atom become excited and travel to higher energy levels, an unstable state. When these electrons fall down to the n=2 energy level, they release a photon in the visible spectrum. This corresponds to the Balmer series.\\
+
+In general, the wavelength $\lambda$ of a photon created from transitioning from a higher energy level $n_{i}$ to a lower energy level $n_{f}$ is given as
+$$\frac{1}{\lambda} = R_{\infty}\left(\frac{1}{n_{f}^2} - \frac{1}{n_{f}^2}\right)$$
+
+where 
+\begin{equation}
+	R_{\infty} = \frac{m_{e}e^4}{8h^3\epsilon_{0}^2c}
+	\label{Rydberg}
+\end{equation}
+
+
+$m_{e}$ being the mass of the electron,  $h$ Plank's constant, and $\epsilon_{0}$ permittivity of free space. $R_{\infty}$ is known as the Rydberg Constant named after Johannes Rydberg. The $\infty$ symbol represents the mathematically ideal case where the atomic nucleus is considered to be infinitely massive compared with the mass of the electron. Thus, the experimentally determined value need to be adjusted to account for the finite mass of the atomic nucleus which is done by replacing the mass of the electron in equation \ref{Rydberg} with the reduced mass $m_{r}$ given by 
+
+$$m_{r} = \frac{1836}{1837}m_{e}$$
+
+and hence the experimental value of the Rydberg constant $R_{exp}$ is given as
+
+\begin{equation}
+	R_{exp} = \frac{1836}{1837}R_{\infty}
+	\label{eq:reduced rydberg}
+\end{equation}
+
+In this experiment, the wavelength $\lambda$ of a number of Balmer series spectral lines for two orders $\eta$ was found. To determine each $\lambda$, a diffraction grating was placed in front of a hydrogen discharge tube. The angle $\theta$ of each intensity maxima of order $\eta$ was then measured with a spectrometer. $\lambda$ can then be calculated from the following relation
+
+\begin{equation}
+	\lambda = \frac{d\sin\theta}{\eta}
+	\label{eq:lambda}
+\end{equation}
+
+where $d$ is the spacing between the slits of the diffraction grating.
+\newpage
+\section{Experiment}
+
+A spectrometer as shown in figure \ref{fig:spectrometer} was used in this experiment
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.22]{spectrometer}
+	\caption{A labelled image of the spectrometer used in this experiment.}
+	\label{fig:spectrometer}
+\end{figure}
+
+The number of lines per millimetre of the diffraction grating was recorded and used to calculate the distance between the slits $d$. A white sheet of paper was places in front of the telescope and the eye piece was adjusted until the cross hairs came into a sharp focus. The eyepiece was also adjusted until the cross hairs were vertical. The telescope was pointed and focused on a distant object using the focus wheel. This was not adjusted again over the course of the experiment. With the diffraction grating not in the holder, the hydrogen lamp was switched on and the telescope brought in line with the collimator. The slit was opened fairly wide and the distance between the slit and the collimator was adjusted until the slit was in sharp focus. The width of the slit was then made narrowed.\\
+
+With the cross hair lined up with the slit, the angle of the telescope with respect to the slit was recorded from the vernier scale. This angle was taken as the zero point of the spectrometer.\\
+
+The diffraction grating was now placed in the holder at right angles to the light ray from the collimator. A large tarp was placed over the spectrometer supported by a cage as shown in figure \ref{fig:tarp}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.2]{tarp}
+	\caption{The spectrometer apparatus covered with a tarp to block the ambient light.}
+	\label{fig:tarp}
+\end{figure}
+
+This was done to eliminate the surrounding ambient light allowing the dim light fringes to be observed.\\
+
+The telescope was now slowly rotated to the right until the first red line is observed. The angle of this line from the zero point was recorded from the vernier scale. This was repeated for each line to the right, noting its colour and order $\eta$. This procedure was repeated now rotating the telescope to the left. In this experiment, two orders of the red spectral line were observed on each side. Two orders of the blue/green line was observed to the right while only one to the left. Only the first order of the of the violet line was observed on either side.
+
+\section{Results}
+Figure \ref{fig:graph} shows the graph of $1/\lambda$ vs $1/n_{i}^2$
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.6]{graph}
+	\caption{The graph of $1/\lambda$ vs $1/n_{i}^2$. The error bars show $\sigma_{1/\lambda}$. The slope of best fit, error in slope and $r^2$ value were determined from a weighted linear regression with weights taken as $1/\sigma_{1/\lambda}$.}
+	\label{fig:graph}
+\end{figure}
+
+The average value and standard deviation $\sigma$ of the calculated wavelength $\lambda$ (equation \ref{eq:lambda}) of each spectral colour (taking the order $\eta$ into account) was found. $\lambda$ of each colour was taken as the average and the error in each $\lambda$ $\sigma_{\lambda}$ as
+
+$$\sigma_{\lambda} = \frac{\sigma}{\sqrt{N}}$$
+
+where $N$ is denotes the number $\lambda$ measurements found for a certain colour.\\
+
+Manipulating equation \ref{Rydberg} for the experimental Rydberg constant $R_{exp}$ yields
+
+\begin{equation}
+	\frac{1}{\lambda} = -R_{exp}\frac{1}{n_{i}^2} + R_{exp}\frac{1}{n_{f}^2}
+	\label{eq:expanded}
+\end{equation}
+
+Thus $R_{exp}$ in terms of the slope $s$ of the graph of figure \ref{fig:graph} is given as
+
+$$R_{exp} = -s$$
+
+Taking the slope of the graph of figure \ref{fig:graph}, $R_{exp}$ was found to be 
+
+$$R_{exp} = 1.107 \times 10^{7} \, \unit{m^{-1}}$$\\
+
+The error in $R_{exp}$, $\sigma_{R_{exp}}$ is then simply the error of the slope $s$ as given in figure \ref{fig:graph}.\\
+
+Thus $R_{exp}$ was found to be 
+
+$$\boxed{ R_{exp} = (1.11 \pm 0.05) \times 10^{7} \, \unit{m^{-1}}}$$\\
+
+The integer $n_{f}$ of equation \ref{Rydberg} corresponding to the energy level which the electrons fall to when they emit a Balmer series wavelength can be found from the x-axis intercept $k$ of the graph of figure \ref{fig:graph} where $1/\lambda = 0$.\\
+
+Thus from equation \ref{eq:expanded}, $k$ can be written as
+
+\begin{align*}
+	k &= R_{exp}\frac{1}{n_{f^2}}
+\end{align*}
+
+Which yields
+
+\begin{equation}
+		n_{f} = \sqrt{\frac{R_{exp}}{k}}
+\end{equation}\\
+
+Using the value of $R_{exp}$ found and $k$ from figure \ref{fig:graph}, $n_{f}$ to the nearest integer was found to be 
+
+$$\boxed{\hspace{20pt}n_{f} = 2\hspace{20pt}}$$
+
+The series wavelength limit of the hydrogen Balmer series $\lambda_{lim}$ can be found by letting $n\to\infty$ in equation \ref{eq:expanded} yielding 
+
+\begin{equation}
+	\lambda_{lim} = \frac{n_{f}^2}{R_{exp}}
+\end{equation}
+
+with error 
+
+\begin{equation}
+	\sigma_{\lambda_{lim}} = \sqrt{\left(\frac{n_{f}^2}{R_{exp}^2}\right)^2\sigma_{R_{exp}}^2}
+\end{equation}
+
+yielding
+
+$$\boxed{ \lambda_{lim} = 360 \pm 10  \, \unit{nm}}$$
+
+\newpage
+\section{Discussion}
+The main error in this experiment arose from the width of each spectral line which was estimated from the standard deviation of each order wavelength spectral line. The actual width of each spectral line could have been measured and taken as the error in each angle measurement which would have yielded a more realistic error for each wavelength.\\
+
+
+The series limit of the Balmer series refers to the photon wavelength an electron emits as it falls from the highest energy level of the hydrogen atom to the second energy level. If an electron were to acquire more energy than this highest energy level, the electron would escape, causing the hydrogen atom to become ionised. The series limit $\lambda_{lim} = 360 \pm 10  \, \unit{nm}$ corresponds to light which falls in the ultraviolet spectrum.\\
+
+The ionisation energy of an atom is defined as the minimum energy required to remove the most loosely bound electron from a neutral gaseous atom in its ground state. As hydrogen has only one electron, the ionisation energy is then simply the energy required for the electron in its ground state to go to infinity which is the same energy which would be released by an electron falling from the series limit of hydrogen to its ground state. The energy of a photon with a wavelength of $\lambda$ is given by
+
+\begin{equation}
+	E = h\frac{c}{\lambda}
+\end{equation}
+
+where $h$ is Plank's constant and $c$ the speed of light. Substituting equation (6) for $\lambda$ yields
+
+\begin{equation}
+	E = \frac{hcR_{exp}}{n_{f}^2}
+\end{equation}
+
+Thus the ionisation energy $E_{I}$ of hydrogen can be calculated by letting $n_{f} = 1$ as the electron falls from the highest energy state to the ground state. Thus
+
+\begin{equation}
+	E_{I} = hcR_{exp}
+\end{equation}
+
+Using the value of $R_{exp}$ found in this experiment yields
+
+$$E_{I} = 13.8 \pm 0.6 \, \unit{eV}$$
+
+
+
+
+\section{Conclusion}
+
+\section{References}
+\newpage
+\section{Appendix}
+
+\begin{table}[h]
+	\centering
+	\caption{Wavelength data values recorded. $\theta^*$ denotes the angle measured before taking away from the zero point.}
+	\resizebox{0.8\textwidth}{!}{%
+		\begin{tabular}{l|l|l|l|l}
+			\hline
+			Colour     & $\eta$ & $\theta^*$ & $\theta$   & $\lambda$      \\ \hline
+			&     & degrees                   & degrees   & m           \\ \hline
+			Red        & 1   & 99.56667                 & 17.94167 & 5.13414E-07 \\
+			Red        & 1   & 64.85                    & 16.775   & 4.81023E-07 \\
+			Red        & 2   & 119.15                   & 37.525   & 5.0759E-07  \\
+			Red        & 2   & 46.53333                 & 35.09167 & 4.79072E-07 \\
+			Blue/Green & 1   & 106.2                    & 24.575   & 6.9314E-07  \\
+			Blue/Green & 1   & 58.18333                 & 23.44167 & 6.63025E-07 \\
+			Blue/Green & 2   & 138.45                   & 56.825   & 6.97503E-07 \\
+			Violet     & 1   & 97.78333                 & 16.15833 & 4.63821E-07 \\
+			Violet     & 1   & 66.53333                 & 15.09167 & 4.3394E-07  \\
+		\end{tabular}%
+	}
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -52,7 +52,7 @@ int main ()
          sum += F(x);
      }
 
-     std::cout << "Integral Value: " << (sum * (b-a)) / iterations << std::endl;
+     std::cout << "Estimate of Integral Value Using Monte Carlo: " << (sum * (b-a)) / iterations << "\n\n";
     
 
 
@@ -72,7 +72,7 @@ int main ()
 
         if (percent_error < 0.01)
         {
-            std::cout << "Number of points necessary for error less than 0.01%: " << num_points << " points" << std::endl;
+            std::cout << "Number of points necessary for absolute error less than 0.01%: " << num_points << " points (this changes for each run of the programme)" << "\n\n";
             break;
         }
     }
@@ -87,7 +87,7 @@ int main ()
 
         if (percent_error < 0.01)
         {
-            std::cout << "Step size needed for trapezium rule error less than 0.01%: " << TrapesiumIntegrate(F, 0, 10, n, true) << std::endl; 
+            std::cout << "Step size needed for trapezium rule absolute error less than 0.01%: " << TrapesiumIntegrate(F, 0, 10, n, true) << "\n\n";
             break;
         }
     }

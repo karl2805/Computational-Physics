@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <vector>
 #include <fstream>
@@ -13,7 +14,7 @@ typedef std::vector<double> VEC;
 
 int main()
 {
-  
+    //this programme should work for any matrix of any size
     MAT2D matrix = {
       {13, 4, 7, 9},
       {10, 6, 5, 12},
@@ -24,7 +25,7 @@ int main()
     Matrix mat(matrix);
 
     std::cout << "Part (a)" << "\n\n";
-    
+
     VEC b = { 111, 118, 114, 163 };
 
     std::cout << "Original Matrix" << "\n";
@@ -34,7 +35,7 @@ int main()
     mat.GaussPivotElim(b);
 
     mat.Print();
-    std::cout << "b = " << "<" << mat.at(0,4) << ", " << mat.at(1, 4) << ", " << mat.at(2, 4) << ", " << mat.at(3, 4) << ">" << "\n\n";
+    std::cout << "new b = " << "<" << mat.at(0, 4) << ", " << mat.at(1, 4) << ", " << mat.at(2, 4) << ", " << mat.at(3, 4) << ">" << "\n\n";
 
     VEC solutions = mat.BackSubstitution(b, false);
 
@@ -49,7 +50,7 @@ int main()
     LINEBREAK
 
     //----------------------------------------------------------------------------------------------------------------------------
-    //Part (b) ------------------------------------------------------------------------------------------------------------------\\
+    //Part (b) 
     //------------------------------------------------------------------------------------------------------------------------------
 
     std::cout << "Part (b): LU Decomposition" << "\n\n";
@@ -62,11 +63,11 @@ int main()
     std::cout << "Upper Triangular:" << "\n";
     upper_triangular.Print();
 
-    std::cout << "Lower Triangular:" << "\n";
-
+    
     //save the lower triangular matrix in another matrix
     Matrix lower_triangular(mat2.LowerTriangular());
-
+    
+    std::cout << "Lower Triangular:" << "\n";
     lower_triangular.Print();
 
     b = { 111,118,114,163 };
@@ -74,35 +75,24 @@ int main()
     VEC Z = lower_triangular.ForwardSubstitution(b);
 
     solutions = upper_triangular.BackSubstitution(Z, true);
-    
+
     std::cout << "x solution via LU decomposition: " << std::endl;
 
     for (int i = 0; i < solutions.size(); i++)
         std::cout << "x" << i + 1 << " = " << solutions.at(i) << "\n";
- 
+
+    //-------------------------------------------------------------------------------------------------------------------------
+    //Finding Inverse
+    //--------------------------------------------------------------------------------------------------
+  
     Matrix inverse(matrix);
-        
-    //finding inverse. Each I1, I2... denotes a column of the inverse matrix I 
-    //Defining columns of the identity matrix ID
-    VEC ID1 = { 1, 0, 0, 0 };
-    VEC ID2 = { 0, 1, 0, 0 };
-    VEC ID3= { 0, 0, 1, 0 };
-    VEC ID4 = { 0, 0, 0, 1 };
+    Matrix mat3(matrix);
 
-    //find the the solution to each column of the inverse matrix by solving the original matrix with columns of the identity matrix
-
-    VEC I1 = inverse.SolveMat(ID1);
-    VEC I2 = inverse.SolveMat(ID2);
-    VEC I3 = inverse.SolveMat(ID3);
-    VEC I4 = inverse.SolveMat(ID4);
-
-    inverse.SetColumn(0, I1);
-    inverse.SetColumn(1, I2);
-    inverse.SetColumn(2, I3);
-    inverse.SetColumn(3, I4);
+    //find the upper and lower matricies
+    Matrix U(mat3.UpperTriangular());
+    Matrix L(mat3.LowerTriangular());
 
     std::cout << "\n" << "Inverse Matrix: " << "\n";
-
-    inverse.Print();
+    inverse.InverseLU(L, U).Print();
 
 }
