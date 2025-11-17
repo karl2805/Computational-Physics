@@ -9,9 +9,9 @@ def to_AU(x, pos):
 
 
 
-data_day = np.genfromtxt("CSVS/Day_Euler.csv",delimiter=",",skip_header=0)
-data_half_day = np.genfromtxt("CSVS/halfday_Euler.csv",delimiter=",",skip_header=0)
-data_quarter_day = np.genfromtxt("CSVS/quarterday_Euler.csv",delimiter=",",skip_header=0)
+data_day = np.genfromtxt("CSVS/Day_RK2.csv",delimiter=",",skip_header=0)
+data_half_day = np.genfromtxt("CSVS/halfday_RK2.csv",delimiter=",",skip_header=0)
+data_quarter_day = np.genfromtxt("CSVS/quarterday_RK2.csv",delimiter=",",skip_header=0)
 
 
 x_day = data_day[:,1]
@@ -25,7 +25,7 @@ y_quarterday = data_quarter_day[:,2]
 
 
 n_cols = 3
-subplot_size = 6  # width and height of each subplot in inches
+subplot_size = 7  # width and height of each subplot in inches
 fig = plt.figure(figsize=(n_cols*subplot_size, subplot_size))
 axes = [fig.add_subplot(1, n_cols, i+1) for i in range(n_cols)]
 
@@ -39,23 +39,18 @@ for x in axes:
 
 plt.subplots_adjust(wspace=0.3)
 
-axes[0].set_title("Stepsize = 1 Day", fontsize=15)
-axes[1].set_title("Stepsize = 1/2 Day", fontsize=15)
-axes[2].set_title("Stepsize = 1/4 Day", fontsize=15)
-
 axes[0].plot(x_day, y_day, 'r')
 axes[1].plot(x_halfday, y_halfday, 'b')
 axes[2].plot(x_quarterday, y_quarterday, 'g')
 
 
 
+fig.savefig("Plots/RK2_Orbit.png",bbox_inches='tight', dpi=300)
 
 
-fig.savefig("Plots/Euler_Orbit.png",bbox_inches='tight', dpi=300)
 
-
-data_energy = np.genfromtxt("CSVS/Day_E_Euler.csv",delimiter=",",skip_header=0)
-data_momentum = np.genfromtxt("CSVS/Day_L_Euler.csv",delimiter=",",skip_header=0)
+data_energy = np.genfromtxt("CSVS/Day_E_RK2.csv",delimiter=",",skip_header=0)
+data_momentum = np.genfromtxt("CSVS/Day_L_RK2.csv",delimiter=",",skip_header=0)
 
 
 x_e = data_energy[:,0]
@@ -90,7 +85,8 @@ axes[1].plot(x_L, y_L, 'b')
 
 
 
-fig.savefig("Plots/Euler_E_L.png",bbox_inches='tight', dpi=300)
+
+fig.savefig("Plots/RK2_E_L.png",bbox_inches='tight', dpi=300)
 
 
 

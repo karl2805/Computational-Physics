@@ -9,7 +9,7 @@ def to_AU(x, pos):
 
 
 
-data_day = np.genfromtxt("CSVS/Day_RK4.csv",delimiter=",",skip_header=0)
+data_day = np.genfromtxt("CSVS/JupiterTest.csv",delimiter=",",skip_header=0)
 data_half_day = np.genfromtxt("CSVS/halfday_RK4.csv",delimiter=",",skip_header=0)
 data_quarter_day = np.genfromtxt("CSVS/quarterday_RK4.csv",delimiter=",",skip_header=0)
 
@@ -44,51 +44,4 @@ axes[1].plot(x_halfday, y_halfday, 'b')
 axes[2].plot(x_quarterday, y_quarterday, 'g')
 
 
-
-fig.savefig("Plots/RK4_Orbit.png",bbox_inches='tight', dpi=300)
-
-
-
-data_energy = np.genfromtxt("CSVS/Day_E_RK4.csv",delimiter=",",skip_header=0)
-data_momentum = np.genfromtxt("CSVS/Day_L_RK4.csv",delimiter=",",skip_header=0)
-
-
-x_e = data_energy[:,0]
-y_e = data_energy[:,1]
-
-x_L = data_momentum[:,0]
-y_L = data_momentum[:,1]
-
-
-n_cols = 2
-subplot_size = 6  # width and height of each subplot in inches
-fig = plt.figure(figsize=(n_cols*subplot_size, subplot_size))
-axes = [fig.add_subplot(1, n_cols, i+1) for i in range(n_cols)]
-
-
-
-
-plt.subplots_adjust(wspace=0.3)
-
-axes[0].set_xlabel("Time", fontsize=15)
-axes[0].set_ylabel("Energy", fontsize=15)
-
-axes[1].set_xlabel("Time", fontsize=15)
-axes[1].set_ylabel("Momentum", fontsize=15)
-
-axes[0].set_title("Energy", fontsize=15)
-axes[1].set_title("Angular Momentum", fontsize=15)
-
-
-axes[0].plot(x_e, y_e, 'r')
-axes[1].plot(x_L, y_L, 'b')
-
-
-
-
-fig.savefig("Plots/RK4_E_L.png",bbox_inches='tight', dpi=300)
-
-
-
-
-
+plt.show()
