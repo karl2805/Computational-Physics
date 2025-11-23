@@ -10,7 +10,8 @@
 
 typedef std::vector<std::vector<double>> Vec2;
 typedef std::vector<double> Vec;
-typedef std::array<double, 4> State; //use five elements to avoid zero indexing
+typedef std::array<double, 4> State; 
+typedef std::array<double, 8> Two_State; 
 
 double CrossProduct(const Vec& a, const Vec& b) // Data only the z component of the cross product
 {
@@ -23,14 +24,29 @@ State operator*(double b, State a)
     return {a[0] * b, a[1] * b, a[2] * b, a[3] * b};
 }
 
-State operator*(State a, double b)
+inline State operator*(State a, double b)
 {
     return {a[0] * b, a[1] * b, a[2] * b, a[3] * b};
 }
 
-State operator+(State a, State b)
+inline State operator+(State a, State b)
 {
     return {a[0] + b[0], a[1] + b[1], a[2] + b[2], a[3] + b[3]};
+}
+
+inline Two_State operator*(double b, Two_State a)
+{
+    return {a[0] * b, a[1] * b, a[2] * b, a[3] * b, a[4] * b, a[5] * b, a[6] * b, a[7] * b};
+}
+
+inline Two_State operator*(Two_State a, double b)
+{
+    return {a[0] * b, a[1] * b, a[2] * b, a[3] * b, a[4] * b, a[5] * b, a[6] * b, a[7] * b};
+}
+
+inline Two_State operator+(Two_State a, Two_State b)
+{
+    return {a[0] + b[0], a[1] + b[1], a[2] + b[2], a[3] + b[3], a[4] + b[4], a[5] + b[5], a[6] + b[6], a[7] + b[7]};
 }
 
 State EarthOrbit(State s) //Data the derivative of the elements of the state vector defined by the ODEs of the problem
@@ -57,16 +73,7 @@ State RK4Step(State (*f)(State s), State& s, double dt)
     return s + (1.0 / 6.0) * (k1 + 2 * k2 + 2 * k3 + k4) * dt;
 }
 
-State RK4Step(State (*f)(State a, State b), State& a, State& b, double dt)
-{
-    State k1 = f(a,b);
-    State k2 = f(a + 0.5 * k1 * dt, b + 0.5 * k1 * dt);
-    State k3 = f(a + 0.5 * k2 * dt, b + 0.5 * k2 * dt);
-    State k4 = f(a + k3 * dt, b + k3 * dt);
 
-    //perform rk4 step
-    return a + (1.0 / 6.0) * (k1 + 2 * k2 + 2 * k3 + k4) * dt;
-}
 
 State RK2StepRalston(State (*f)(State s), State& s, double dt)
 {
@@ -89,7 +96,7 @@ struct Data //struct that saves all the data of the orbit
 	Vec2 Energy; //record the energy
 };
 
-void RecordData(Data& data, State& s, double time)
+void RecordData(Data& data, const State& s, double time)
 {
     //calculate the angular momentum and save
     Vec r_vec = {s[0], s[1]};

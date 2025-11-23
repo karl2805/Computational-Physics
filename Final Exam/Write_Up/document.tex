@@ -1,0 +1,224 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper, total={7.5in, 10.5in}]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\usepackage{gensymb}
+\usepackage{caption}
+\usepackage[export]{adjustbox}
+\usepackage[hidelinks]{hyperref}
+\setlength\fboxsep{10pt}
+\setlength\fboxrule{1pt}
+\usepackage{wrapfig}
+\hbadness = 1000000000
+\usepackage{pythonhighlight}
+\setlength{\parindent}{0pt}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{multicol}
+\usepackage[thinc]{esdiff}
+\usepackage{minted} 
+\usepackage{siunitx}
+\newcommand{\solarmass}{\textup{M}_\odot}
+\newcommand{\earthmass}{\textup{M}_{E}}
+\newcommand{\uvec}[1]{\boldsymbol{\hat{\textbf{#1}}}}
+\newcommand{\vvec}[1]{\vec{\boldsymbol{#1}}}
+\usepackage{amsmath}
+\usepackage{calc}
+\usepackage{hyperref}
+\hypersetup{colorlinks=false}
+\makeatletter
+\newcommand*\@dblLabelI {}
+\newcommand*\@dblLabelII {}
+\newcommand*\@dblequationAux {}
+
+\def\@dblequationAux #1,#2,%
+{\def\@dblLabelI{\label{#1}}\def\@dblLabelII{\label{#2}}}
+\newcommand*{\doubleequation}[3][]{%
+	\par\vskip\abovedisplayskip\noindent
+	\if\relax\detokenize{#1}\relax
+	\let\@dblLabelI\@empty
+	\let\@dblLabelII\@empty
+	\else % we assume here that the optional argument
+	% has the required shape A,B
+	\@dblequationAux #1,%
+	\fi
+	\makebox[0.5\linewidth-1.5em]{%
+		\hspace{\stretch2}%
+		\makebox[0pt]{$\displaystyle #2$}%
+		\hspace{\stretch1}%
+	}%
+	\makebox[0.5\linewidth-1.5em]{%
+		\hspace{\stretch1}%
+		\makebox[0pt]{$\displaystyle #3$}%
+		\hspace{\stretch2}%
+	}%
+	\makebox[3em][r]{(%
+		\refstepcounter{equation}\theequation\@dblLabelI, 
+		\refstepcounter{equation}\theequation\@dblLabelII)}%
+	\par\vskip\belowdisplayskip
+}
+\newcommand*{\ndoubleequation}[3][]{%
+	\par\vskip\abovedisplayskip\noindent
+	\if\relax\detokenize{#1}\relax
+
+	\else % we assume here that the optional argument
+	% has the required shape A,B
+	\@dblequationAux #1,%
+	\fi
+	\makebox[0.5\linewidth-1.5em]{%
+		\hspace{\stretch2}%
+		\makebox[0pt]{$\displaystyle #2$}%
+		\hspace{\stretch1}%
+	}%
+	\makebox[0.5\linewidth-1.5em]{%
+		\hspace{\stretch1}%
+		\makebox[0pt]{$\displaystyle #3$}%
+		\hspace{\stretch2}%
+	}%
+\par\vskip\belowdisplayskip
+	
+}
+
+
+\begin{document}
+
+
+
+
+
+\begin{center}
+	\huge \textbf{\underline{Orbital Integration of Earth and Jupiter}} \\
+	\vspace{10pt}
+	\large Karl Riedewald 123377661\\
+	
+\end{center}
+
+\vspace{30pt}
+
+\section{Introduction}
+This report examines various methods of solving differential equations numerically by computer programme to simulate the Earth and Jupiter orbiting the Sun. Specifically, the Euler method, Runge-Kutta 2nd order (RK2) and Runge-Kutta 4th order (RK4) methods are used and compared for their accuracy and stability. The orbit of earth around the Sun was first simulated with each of the aforementioned methods. Jupiter was then added to the system and its gravitational affect on the orbit of the earth examined.\\
+
+\section{Orbit of Earth Around the Sun}
+\subsection{Mathematical Analysis}
+From Newton's universal law of gravitation, the gravitational force $F_{E}$ acting on the Earth as it orbits the Sun is given by
+
+\begin{equation}
+	F_{E} = -\frac{G\earthmass\solarmass}{r^{2}}\uvec{r}\\
+	\label{eq:Newton's Law of Gravitation}
+\end{equation}
+
+where $G$ is the universal gravitational constant, $\solarmass$ the mass of the sun, $\earthmass$ the mass of the earth, $r$ the distance between the Earth and the Sun and $\uvec{r}$ the unit vector pointing from the Earth to the Sun. The acceleration $a_{E}$ that the earth experiences at any time during its orbit around the Sun is then given from Newton's second law of motion by
+
+\begin{equation}
+	a_{E} = \frac{F_{E}}{\earthmass} = -\frac{G\solarmass}{r^{2}}\uvec{r} = -\frac{G\solarmass\vvec{r}}{r^3}\\
+	\label{eq:Accelleration of the Earth}
+\end{equation} 
+
+where $\vvec{r}$ is the vector pointing from the Earth to the Sun.\\
+
+It is now assumed that the mass of the Sun is sufficiently large relative to that of the Earth such that its motion can be ignored. Setting the Sun's position to the centre of the Cartesian coordinate system, the x and y components of the Earth's position as it orbits the Sun can now be written as
+
+\doubleequation[eq:accelx,eq:accely]{\diff[2]{x}{t} = -\frac{G\solarmass x}{r^3}}{\diff[2]{y}{t} = -\frac{G\solarmass y}{r^3}}
+
+Now in order to solve these differential equations numerically, they need to be split into two separate first order differential equations. By setting the velocities in the x and y directions to
+
+\doubleequation[eq:vx,eq:vy]{\diff{x}{t} = v_{x}}{\diff{y}{t} = v_{y}}
+
+
+equations \ref{eq:accelx} and \ref{eq:accely} can be rewritten in therms of the acceleration $a_{x}$ and $a_{y}$ as
+
+\doubleequation[eq:ax,eq:ay]{a_{x} = \diff{v_{x}}{t} = -\frac{G\solarmass x}{r^3}}{a_{y} = \diff{v_{y}}{t} =  -\frac{G\solarmass y}{r^3}}
+
+This set of four differential equations are now all of first order and can thus be solved using the numerical integration methods.
+
+\newpage
+
+\subsection{Euler Method}
+\subsubsection{Implementation}
+The Euler method is a simple technique which the next value $y_{i+1}$ of first order differential equations over step $h$ of the form
+
+\begin{equation}
+	\diff{y}{x} = f(x, y),\, \, \, \,  y(0) = y_{0}
+\end{equation}
+
+using the following equation 
+
+\begin{equation}
+	y_{i+1} = y_{i} + f(x_{i}, y_{i})h\\
+	\label{eq:Euler Method}
+\end{equation}
+
+\vspace{10pt}
+In order to solve the above differential equations with C\texttt{++} in a nice manner using the Euler method, a state vector was defined as an array which stores the Earth's $x, y$ position in the first two indexes and the Earth's velocity components $v_{x}, v_{y}$ in the last two indexes. A function `Earth Orbit' was then defined which takes in the current state vector and returns the derivative of the state vector, namely the velocity $v_{x}, v_{y}$ and acceleration $a_{x}, a_{y}$. (This function corresponds to the $f(x_{i}, y_{i})$ function of equation \ref{eq:Euler Method}). The acceleration is calculated from equation \ref{eq:ax} and \ref{eq:ay}. The new velocities can simply be passed on from the old state vector due to the nature of equations \ref{eq:vx} and \ref{eq:vy}. Below is the code of this function.
+
+\begin{verbatim}
+\begin{minted}{cpp}
+typedef std::array<double, 4> State; 
+
+State EarthOrbit(State s) 
+{
+	//calculate the magnitude of r to find acceleration later
+	double r = std::sqrt(s[0] * s[0] + s[1] * s[1]);
+	
+	//calcualte the acceleration for the x and y components
+	double a_x = (-G * M_Sun * s[0] ) / (r * r * r);
+	double a_y = (-G * M_Sun * s[1] ) / (r * r * r);
+	
+	//return the derivative state using the velocities of the input state vector
+	return {s[2], s[3], a_x, a_y};
+}	
+\end{minted}
+\end{verbatim}
+
+
+The function `EulerStep' was then defined which takes in a function (the `EarthOrbit' function in this case) and simply implements equation \ref{eq:Euler Method} as show here
+
+\begin{verbatim}
+\begin{minted}{cpp}
+State EulerStep(State (*f)(State s), State& s, double dt)
+{
+	return s + f(s) * dt;
+}	
+\end{minted}
+\end{verbatim}
+
+This function with a specified step size dt was then run in a loop over a certain time frame to numerically solve the required differential equations using the Euler method.
+
+
+\newpage
+
+
+\subsubsection{Results}
+
+The Euler integration method was run for the Earth around the Sun for a simulated time of 5 years for three different step sizes of a day, a half day and a quarter of a day as shown in figure \ref{gr:Euler_Earth}. The initial $x$ position was set to 1 Astronomical Unit (AU) which is defined as the mean distance between the Sun and the Earth while the initial $y$ position was set to 0. The initial velocity of the Earth was set to the Keplerian velocity in the positive y direction given by
+
+\begin{equation}
+	v_{y_{0}} = \sqrt{\frac{G\earthmass}{r}}
+\end{equation}
+
+The initial velocity in the x direction $v_{x_{0}}$ was set to zero.\\
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{Euler_Orbit}
+	\caption{The Euler integration method performed for 3 different step sizes. The Earth's initial position was set to 1 AU to the right of Sun which is represented by the yellow circle in each plot. The initial velocity was set the the Keplerian velocity}
+	\label{gr:Euler_Earth}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
