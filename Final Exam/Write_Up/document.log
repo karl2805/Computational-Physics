@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.23)  23 NOV 2025 02:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.23)  23 NOV 2025 23:03
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -814,53 +814,187 @@ Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
 [1
 
 {C:/Users/karlr/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+\pydata@fh@0=\write5
+\openout5 = `_FDC3BDEFB79CEC8EB8211D2499E04704.data.minted'.
+
+runsystem(latexminted config  --timestamp 20251123230355Z FDC3BDEFB79CEC8EB8211
+D2499E04704)...executed.
+
+
+(_FDC3BDEFB79CEC8EB8211D2499E04704.config.minted)
+runsystem(latexminted cleanconfig  --timestamp 20251123230355Z FDC3BDEFB79CEC8E
+B8211D2499E04704)...executed.
+
+ (_minted/default.style.minted) (_minted/A080CC0576CEF4D0DF153A8A9C000BA2.highl
+ight.minted
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 2.
+)
+(_minted/7A375D50321EEF9013CD1BF57FA41A09.highlight.minted)
 
 [2]
-<Euler_Orbit.png, id=66, 859.5312pt x 852.5451pt>
+<Euler_Orbit.png, id=87, 859.5312pt x 852.5451pt>
 File: Euler_Orbit.png Graphic file (type png)
 <use Euler_Orbit.png>
-Package pdftex.def Info: Euler_Orbit.png  used on input line 206.
+Package pdftex.def Info: Euler_Orbit.png  used on input line 207.
 (pdftex.def)             Requested size: 429.76454pt x 426.27151pt.
 
 
 [3 <./Euler_Orbit.png>]
-runsystem(latexminted cleantemp  --timestamp 20251123022821Z FDC3BDEFB79CEC8EB8
-211D2499E04704)...executed.
 
- (document.aux)
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 232.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 232
+.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 232.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 232
+.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 232.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 232
+.
+
+LaTeX Font Info:    Calculating math sizes for size <> on input line 234.
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <> not available
+(Font)              size <5> substituted on input line 234.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <0.7> not available
+(Font)              size <5> substituted on input line 234.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <0.5> not available
+(Font)              size <5> substituted on input line 234.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <> not available
+(Font)              size <5> substituted on input line 234.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <0.7> not available
+(Font)              size <5> substituted on input line 234.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <0.5> not available
+(Font)              size <5> substituted on input line 234.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <> not available
+(Font)              size <5> substituted on input line 234.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <0.7> not available
+(Font)              size <5> substituted on input line 234.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <0.5> not available
+(Font)              size <5> substituted on input line 234.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 236.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 236
+.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 239.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 239
+.
+
+<Euler_E_L.png, id=102, 736.4313pt x 401.0985pt>
+File: Euler_E_L.png Graphic file (type png)
+<use Euler_E_L.png>
+Package pdftex.def Info: Euler_E_L.png  used on input line 245.
+(pdftex.def)             Requested size: 515.4984pt x 280.76701pt.
+
+
+[4 <./Euler_E_L.png>]
+(_minted/CA7CDA80E8778F9898508509D70B1699.highlight.minted)
+(_minted/CD125C288B2F5694A910A575208333B7.highlight.minted)
+<RK2_Orbit.png, id=115, 859.5312pt x 852.5451pt>
+File: RK2_Orbit.png Graphic file (type png)
+<use RK2_Orbit.png>
+Package pdftex.def Info: RK2_Orbit.png  used on input line 320.
+(pdftex.def)             Requested size: 300.84042pt x 298.39526pt.
+
+
+[5]
+<RK4_Orbit.png, id=122, 859.5312pt x 852.5451pt>
+File: RK4_Orbit.png Graphic file (type png)
+<use RK4_Orbit.png>
+Package pdftex.def Info: RK4_Orbit.png  used on input line 327.
+(pdftex.def)             Requested size: 300.84042pt x 298.39526pt.
+<Radius.png, id=123, 624.4128pt x 629.9535pt>
+File: Radius.png Graphic file (type png)
+<use Radius.png>
+Package pdftex.def Info: Radius.png  used on input line 334.
+(pdftex.def)             Requested size: 312.20563pt x 314.97598pt.
+
+
+[6 <./RK2_Orbit.png> <./RK4_Orbit.png>]
+<RK2_E_L.png, id=132, 736.4313pt x 401.0985pt>
+File: RK2_E_L.png Graphic file (type png)
+<use RK2_E_L.png>
+Package pdftex.def Info: RK2_E_L.png  used on input line 341.
+(pdftex.def)             Requested size: 368.21475pt x 200.54875pt.
+
+
+[7 <./Radius.png> <./RK2_E_L.png>]
+
+[8] (document.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-30>
  ***********
+
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 4.5pt have occurred.
+
 Package rerunfilecheck Info: File `document.out' has not changed.
-(rerunfilecheck)             Checksum: 9672A56542AA54EC9CD0AF4878B1EE9C;830.
+(rerunfilecheck)             Checksum: F71DDA937C97963A357C96CCA3268ABE;1583.
  ) 
 Here is how much of TeX's memory you used:
- 22607 strings out of 473898
- 476171 string characters out of 5726479
- 967344 words of memory out of 5000000
- 45190 multiletter control sequences out of 15000+600000
- 568753 words of font info for 73 fonts, out of 8000000 for 9000
+ 23037 strings out of 473898
+ 486222 string characters out of 5726479
+ 967803 words of memory out of 5000000
+ 45577 multiletter control sequences out of 15000+600000
+ 569602 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 79i,10n,93p,869b,932s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 79i,10n,93p,869b,936s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/karlr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmbx10.pfb><C:/Users/karlr/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
-fonts/cm/cmbx12.pfb><C:/Users/karlr/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmex10.pfb><C:/Users/karlr/AppData/Local/Programs/MiKTeX/font
-s/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/karlr/AppData/Local/Programs/Mi
-KTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/karlr/AppData/Local/Pro
-grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/karlr/AppData
-/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/karlr
-/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Use
-rs/karlr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb>
-<C:/Users/karlr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
-r8.pfb><C:/Users/karlr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
-s/cm/cmsy10.pfb><C:/Users/karlr/AppData/Local/Programs/MiKTeX/fonts/type1/publi
-c/amsfonts/cm/cmsy8.pfb><C:/Users/karlr/AppData/Local/Programs/MiKTeX/fonts/typ
-e1/public/amsfonts/cm/cmtt10.pfb>
-Output written on document.pdf (3 pages, 644908 bytes).
+cmbsy10.pfb><C:/Users/karlr/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmbx10.pfb><C:/Users/karlr/AppData/Local/Programs/MiKTeX/fonts/type1/
+public/amsfonts/cm/cmbx12.pfb><C:/Users/karlr/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/karlr/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/Users/karlr/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/karlr/AppDa
+ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/kar
+lr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:
+/Users/karlr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/
+cmmib8.pfb><C:/Users/karlr/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
+fonts/cm/cmr10.pfb><C:/Users/karlr/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/amsfonts/cm/cmr12.pfb><C:/Users/karlr/AppData/Local/Programs/MiKTeX/fonts/
+type1/public/amsfonts/cm/cmr6.pfb><C:/Users/karlr/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/karlr/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/karlr/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/karlr/AppDa
+ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on document.pdf (8 pages, 1885555 bytes).
 PDF statistics:
- 137 PDF objects out of 1000 (max. 8388607)
- 22 named destinations out of 1000 (max. 500000)
- 54 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 224 PDF objects out of 1000 (max. 8388607)
+ 42 named destinations out of 1000 (max. 500000)
+ 119 words of extra memory for PDF output out of 10000 (max. 10000000)
 

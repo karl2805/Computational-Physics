@@ -13,6 +13,7 @@ typedef std::vector<double> Vec;
 typedef std::array<double, 4> State; 
 typedef std::array<double, 8> Two_State; 
 
+
 double CrossProduct(const Vec& a, const Vec& b) // Data only the z component of the cross product
 {
 	return (a[0] * b[1]) - (a[1] * b[0]);
@@ -94,6 +95,7 @@ struct Data //struct that saves all the data of the orbit
 	Vec2 trajectory; //record the trajectory
 	Vec2 L; //record the angular momentum
 	Vec2 Energy; //record the energy
+    Vec2 e; //record the eccentricity
 };
 
 void RecordData(Data& data, const State& s, double time)
@@ -102,20 +104,30 @@ void RecordData(Data& data, const State& s, double time)
     Vec r_vec = {s[0], s[1]};
     Vec p_vec = {M_Earth * s[2], M_Earth * s[3]};
 
-    data.L.push_back({time, CrossProduct(r_vec, p_vec)});
+    double L = CrossProduct(r_vec, p_vec);
+
+    data.L.push_back({time, L});
 
     //find magnitute of the current velocity
     double v = std::sqrt(s[2] * s[2] + s[3] * s[3]);
 
     //find the magnitude of the current r vector
     double r = std::sqrt(s[0] * s[0] + s[1] * s[1]);
-    double energy = 0.5 * M_Earth * v * v - (G * M_Earth * M_Sun) / r;
+    //double energy = 0.5 * M_Earth * v * v - (G * M_Earth * M_Sun) / r;
+
+    double energy = (-G * M_Sun * M_Earth) / r + 0.5 * M_Earth * v * v;
 
     //save the energy with the current time for plotting
     data.Energy.push_back({time, energy});
 
     //save the current position trajectory
     data.trajectory.push_back({time, s[0], s[1]});
+
+    double h = L / M_Earth;
+
+    double e = std::sqrt(1 + ((h*h) / (mu * mu)) * (v*v - (2*mu/r)));
+
+    data.e.push_back({time, e});
 }
 
 

@@ -16,6 +16,7 @@ def to_years(thing):
 data_earth = np.genfromtxt("CSVS/Earth_With_Jupiter.csv", delimiter=",",skip_header=0)
 data_earth_L = np.genfromtxt("CSVS/Earth_With_Jupiter_Earth_L.csv", delimiter=",",skip_header=0)
 data_earth_E = np.genfromtxt("CSVS/Earth_With_Jupiter_Earth_E.csv", delimiter=",",skip_header=0)
+data_earth_e = np.genfromtxt("CSVS/Earth_e.csv", delimiter=",",skip_header=0)
 
 data_jupiter = np.genfromtxt("CSVS/Jupiter_With_Earth.csv", delimiter=",",skip_header=0)
 data_jupiter_L = np.genfromtxt("CSVS/Earth_With_Jupiter_Jupiter_L.csv", delimiter=",",skip_header=0)
@@ -38,6 +39,7 @@ fig, ax = plt.subplots(figsize=(10, 10))
 fig2, ax2 = plt.subplots(figsize=(10, 10))
 fig3, ax3 = plt.subplots(figsize=(10, 10))
 fig4, ax4 = plt.subplots(figsize=(10, 10))
+fig5, ax5 = plt.subplots(figsize=(10, 10))
 
 
 
@@ -65,7 +67,9 @@ ax4.plot(time, earth_radius)
 ax4.set_title("Earth Radius", fontsize=15)
 plt.savefig("Plots/Earth_Radius.png")
 
-
+ax5.plot(time, data_earth_e[:,1])
+ax5.set_title("Earth Eccentricity", fontsize=15)
+plt.savefig("Plots/Earth_e.png")
 
 
 

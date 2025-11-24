@@ -6,3 +6,5 @@ const double AU = 1.496e11; // Astronomical Unit (meters)
 const double Day = 60*60*24; //seconds in a day
 const double Year = 365.25*Day;// seconds in a year
 const double Hour = 60*60;
+
+const double mu = G*(M_Earth + M_Sun);

@@ -1,9 +1,10 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.ticker import FuncFormatter
+import os
 
 AU = 1.496e11
-
+Year = 60*60*24*365.25
 def to_AU(x, pos):
     return f"{x/AU:.2f}"
 
@@ -71,7 +72,7 @@ new_pos = [pos.x0 + 0.25, pos.y0, pos.width, pos.height]
 axes_flat[2].set_position(new_pos)
 
 fig.savefig(
-    "C:/Users/karlr/OneDrive/Documents/Comp/Computational-Physics/Final Exam/Write_Up/Euler_Orbit.png",
+    os.path.dirname(__file__) + "/Write_Up/Euler_Orbit.png",
     bbox_inches='tight', dpi=300
 )
 
@@ -79,7 +80,9 @@ data_energy = np.genfromtxt("CSVS/Day_E_Euler.csv",delimiter=",",skip_header=0)
 data_momentum = np.genfromtxt("CSVS/Day_L_Euler.csv",delimiter=",",skip_header=0)
 
 
-x_e = data_energy[:,0]
+x_e = data_energy[:,0] 
+time = x_e / Year
+
 y_e = data_energy[:,1]
 
 x_L = data_momentum[:,0]
@@ -96,22 +99,22 @@ axes = [fig.add_subplot(1, n_cols, i+1) for i in range(n_cols)]
 
 plt.subplots_adjust(wspace=0.3)
 
-axes[0].set_xlabel("Time", fontsize=15)
-axes[0].set_ylabel("Energy", fontsize=15)
+axes[0].set_xlabel("Time (Years)", fontsize=15)
+axes[0].set_ylabel("Energy  (J)", fontsize=15)
 
-axes[1].set_xlabel("Time", fontsize=15)
-axes[1].set_ylabel("Momentum", fontsize=15)
+axes[1].set_xlabel("Time (Years)", fontsize=15)
+axes[1].set_ylabel("Momentum ($kgm^2s^{-1}$)", fontsize=15)
 
 axes[0].set_title("Energy", fontsize=15)
-axes[1].set_title("Angular Momentum", fontsize=15)
+axes[1].set_title("Angular Momentum ", fontsize=15)
 
 
-axes[0].plot(x_e, y_e, 'r')
-axes[1].plot(x_L, y_L, 'b')
+axes[0].plot(time, y_e, 'r')
+axes[1].plot(time, y_L, 'b')
 
 
 
-fig.savefig("Plots/Euler_E_L.png",bbox_inches='tight', dpi=300)
+fig.savefig(os.path.dirname(__file__) + "/Write_Up/Euler_E_L.png",bbox_inches='tight', dpi=300)
 
 
 

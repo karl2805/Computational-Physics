@@ -66,7 +66,7 @@ int main()
     RecordData(earth_data, earth, time);
     RecordData(jupiter_data, jupiter, time);
 
-    double running_time = 12*Year;
+    double running_time = 100*Year;
     double dt = Day;
 
     for (time = dt; time < running_time; time += dt)
@@ -90,6 +90,6 @@ int main()
     SavetoCsv("CSVS/Earth_With_Jupiter_Jupiter_L.csv", jupiter_data.L, false);
     SavetoCsv("CSVS/Earth_With_Jupiter_Jupiter_E.csv", jupiter_data.Energy, false);
     
-
+    SavetoCsv("CSVS/Earth_e.csv", earth_data.e, false);
 
 }
