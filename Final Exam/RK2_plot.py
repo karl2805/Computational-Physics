@@ -228,7 +228,7 @@ axes[1].legend()
 fig.savefig(os.path.dirname(__file__) + "/Write_Up/RK2_E_L.png",bbox_inches='tight', dpi=300)
 
 
-fig = plt.figure(figsize=(10, 10))
+fig = plt.figure(figsize=(9, 6))
 axes = fig.add_subplot()
 
 euler_radius = np.sqrt(data_day_euler[:,1]**2 + data_day_euler[:,2]**2)
@@ -245,7 +245,7 @@ axes.set_xlabel("Time (Years)", fontsize=17)
 axes.set_title("Radius of Orbit with Time for the Methods", fontsize=20)
 axes.legend()
 
-fig.savefig("C:/Users/karlr/OneDrive/Documents/Comp/Computational-Physics/Final Exam/Write_Up/Radius.png",bbox_inches='tight', dpi=300)
+fig.savefig(os.path.dirname(__file__) + "/Write_Up/Radius.png",bbox_inches='tight', dpi=300)
 
 
 

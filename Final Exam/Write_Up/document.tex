@@ -242,7 +242,7 @@ where $v$ is the velocity of the Earth. Calculations of equations \ref{eq:Earth_
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.7]{Euler_E_L}
+	\includegraphics[scale=0.6]{Euler_E_L}
 	\caption{Plots of the total energy and angular momentum of the system with time for the Euler method over a simulated time of 5 years with a step size of a day.}
 	\label{gr:Energy_L_Euler}
 \end{figure}
@@ -318,35 +318,55 @@ State RK4Step(State (*f)(State s), State& s, double dt)
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.35]{RK2_Orbit}
-	\caption{}
+	\caption{Earth's orbit simulation using the RK2 method over a simulation time of 5 years with three different step sizes. This method is still unstable for these time steps as can be seen, but is slightly better than the previous Euler method as will be discussed later.}
 	\label{gr:RK2_Orbit}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.35]{RK4_Orbit}
-	\caption{}
+	\caption{Earth's orbit simulation using the RK4 method over a simulation time of 5 years with three different step sizes. This is the first method to give stable orbits for each time step.}
 	\label{RK4_Orbit}
 \end{figure}
 
+In order to compare the orbital evolution of each method presented, the radius of the orbit as it evolves with time is given in figure \ref{gr:Radius};
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{Radius}
-	\caption{}
+	\caption{The evolution of the radius of the orbit of Earth with time for each integration method.}
 	\label{gr:Radius}
 \end{figure}
 
+Figure \ref{gr:Radius} makes it clear that the radius of the orbit is increasing the fastest for the Euler method with the RK2 method radius increasing slightly slower. The RK4 method is stable over the 5 year timespan with the radius staying fixed, indicating a circular orbit, which is the expected behaviour of this two body system with the specified initial conditions. It is interesting to note that the other two methods are adding an elliptical shape to the orbit which increases with the radius increasing as is seen by the wavy nature of their plots in figure \ref{gr:Radius}.
+
+
+
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.5]{RK2_E_L}
-	\caption{}
+	\includegraphics[scale=0.6]{RK2_E_L}
+	\caption{The energy and angular momentum evolution of the Earth for each method over a timespan of 5 years with a step size of a day.}
 	\label{gr:Comparing_E_L}
 \end{figure}
 
+Figure \ref{gr:Comparing_E_L} shows the energy and angular momentum evolution of the earth for each integration method. In a similar way to the figure \ref{gr:Radius}, using the Euler method, the Earth gains energy and angular momentum the fastest with RK2 gaining the two quantities at a slower rate. The RK4 method again shows stability with the energy and angular momentum of the Earth not changing at all over the course of the 5 year simulation. \\
+
+From these comparisons, it is clear that the RK4 method shows by far the most stability and accuracy and will therefore be used for the simulation of the next section.
 
 \newpage
 
 \section{Orbit of Earth and Jupiter}
+The planet Jupiter will now be added to the previous simulation and its affects on the orbit of Earth determined.\\
+
+To model the Earth-Jupiter system, four differential equations similar to those given by equations \ref{eq:accelx} and \ref{eq:accely} will need to be solved, one for each of the x, y coordinates of the Earth and Jupiter. However, in order to model this system accurately, the differential equations will need to be modified to account for the force present between the Earth and Jupiter. \\
+
+The force $F_{EJ}$ between the Earth and Jupiter is given by a modified version of equation 1
+
+\begin{equation}
+	F_{EJ} = -\frac{GM_{E}M_{J}}{r_{2}}\uvec{r}
+	\label{eq:force_earth_jupiter}
+\end{equation}
+
+where $r$ is now the distance between the Earth and Jupiter and $\uvec{r}$ is the unit vector pointing from the Earth to Jupiter.
 
 
 

@@ -25,10 +25,10 @@ x_quarterday = data_quarter_day[:,1]
 y_quarterday = data_quarter_day[:,2]
 
 
-# n_cols = 3
-# subplot_size = 6  # width and height of each subplot in inches
-# fig = plt.figure(figsize=(n_cols*subplot_size, subplot_size))
-# axes = [fig.add_subplot(1, n_cols, i+1) for i in range(n_cols)]
+n_cols = 3
+subplot_size = 6  # width and height of each subplot in inches
+fig = plt.figure(figsize=(n_cols*subplot_size, subplot_size))
+axes = [fig.add_subplot(1, n_cols, i+1) for i in range(n_cols)]
 
 # --- NEW LAYOUT: 2 rows × 2 columns ---
 fig, axes = plt.subplots(2, 2, figsize=(12, 12))
