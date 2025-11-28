@@ -23,6 +23,7 @@
 \usepackage{siunitx}
 \newcommand{\solarmass}{\textup{M}_\odot}
 \newcommand{\earthmass}{\textup{M}_{E}}
+\newcommand{\jupitermass}{\textup{M}_{J}}
 \newcommand{\uvec}[1]{\boldsymbol{\hat{\textbf{#1}}}}
 \newcommand{\vvec}[1]{\vec{\boldsymbol{#1}}}
 \usepackage{amsmath}
@@ -83,6 +84,8 @@
 }
 
 
+
+
 \begin{document}
 
 
@@ -96,10 +99,20 @@
 	
 \end{center}
 
-\vspace{30pt}
+\vspace{70pt}
 
 \section{Introduction}
-This report examines various methods of solving differential equations numerically by computer programme to simulate the Earth and Jupiter orbiting the Sun. Specifically, the Euler method, Runge-Kutta 2nd order (RK2) and Runge-Kutta 4th order (RK4) methods are used and compared for their accuracy and stability. The orbit of earth around the Sun was first simulated with each of the aforementioned methods. Jupiter was then added to the system and its gravitational affect on the orbit of the earth examined.\\
+This report compares the accuracy and stability of the Euler and Runge-Kutta second and fourth order methods to solve differential equations numerically. Each method was applied to solve the system of the Earth's orbit around the Sun. The method of greatest accuracy was then applied to the more complex system of the Earth and Jupiter orbiting the Sun and the affect of Jupiter's influence on the Earth's orbit was examined.\\
+
+Numerical methods find approximate solutions to differential equations by through iterative calculations based on a time step $dt$. These methods use the derivative at each time step to estimate the value at the next point which is then used to calculate the next derivative and the process repeats. \\
+
+The accuracy of a particular method depends on how the derivative is used to calculate the new value as well as the size of the iterative time step. Small errors in each iterative calculation can accumulate over time to lead to quite inaccurate solutions over time. The accuracy of each method can be compared by calculating the total energy and angular momentum of the simulation at each time step, something which does not change in a physically isolated system such as the Earth orbiting the Sun.\\
+
+The Earth orbits the Sun with a period of approximately 365 days with a mean orbital radius defined as 1 Astronomical Unit (AU). The orbit of the Earth around the Sun is slightly elliptical with an apoapsis of 1.01 AU and a periapsis of 0.98 AU. In the simulation presented here, the Earth's orbit was assumed circular with a radius of 1 AU and a velocity given by the Keplerian velocity. In addition, the Sun's mass was assumed to be sufficiently large relative to the Earth such that its motion can be neglected.\\
+
+Jupiter has by far the greatest mass in our solar system, with a mass of more than two and half times that of all the other planets combined, about 317 times that of the Earth. Jupiter completes an orbit of the Sun about every 12 years with an average orbital radius of about 5.2 AU. Even at this great distance, the sheer mass of Jupiter causes its gravitational pull on the Earth to be significant factor of the Earth's orbit around the Sun. Using the integration method of greatest accuracy, Jupiter was added to the Earth orbit simulation and its affect discussed.
+
+\newpage
 
 \section{Orbit of Earth Around the Sun}
 \subsection{Mathematical Analysis}
@@ -194,10 +207,11 @@ This function with a specified step size dt was then run in a loop over a certai
 
 \subsubsection{Results}
 
-The Euler integration method was run for the Earth around the Sun for a simulated time of 5 years for three different step sizes of a day, a half day and a quarter of a day as shown in figure \ref{gr:Euler_Earth}. The initial $x$ position was set to 1 Astronomical Unit (AU) which is defined as the mean distance between the Sun and the Earth while the initial $y$ position was set to 0. The initial velocity of the Earth was set to the Keplerian velocity in the positive y direction given by
+The Euler integration method was run for the Earth around the Sun for a simulated time of 5 years for three different step sizes of a day, a half day and a quarter of a day as shown in figure \ref{gr:Euler_Earth}. The initial $x$ position was set to 1 Astronomical Unit (AU) while the initial $y$ position was set to 0. The initial velocity of the Earth was set to the Keplerian velocity in the positive y direction given by
 
 \begin{equation}
 	v_{y_{0}} = \sqrt{\frac{G\earthmass}{r}}
+	\label{eq:Kepler}
 \end{equation}
 
 The initial velocity in the x direction $v_{x_{0}}$ was set to zero.\\
@@ -209,7 +223,7 @@ The initial velocity in the x direction $v_{x_{0}}$ was set to zero.\\
 	\label{gr:Euler_Earth}
 \end{figure}
 
-As can be seen from the plots of figure \ref{gr:Euler_Earth}, the Euler method is not very stable. The radius of Earth's orbit increases dramatically over the 5 year simulation time. While decreasing the step size does decrease the rate at which the radius of the orbit increases, the orbit is still unstable even for a step size as low as a quarter of a day.
+As can be seen from the plots of figure \ref{gr:Euler_Earth}, the Euler method is not very stable. The radius of Earth's orbit increases dramatically over the 5 year simulation time. While decreasing the step size does decrease the rate at which the radius of the orbit increases, the orbit is still unstable even for a step size as low as a quarter of a day. It can also be seen from these graphs that 
 
 \newpage
 
@@ -359,14 +373,152 @@ The planet Jupiter will now be added to the previous simulation and its affects 
 
 To model the Earth-Jupiter system, four differential equations similar to those given by equations \ref{eq:accelx} and \ref{eq:accely} will need to be solved, one for each of the x, y coordinates of the Earth and Jupiter. However, in order to model this system accurately, the differential equations will need to be modified to account for the force present between the Earth and Jupiter. \\
 
-The force $F_{EJ}$ between the Earth and Jupiter is given by a modified version of equation 1
+The force $F_{EJ}$ on the Earth from Jupiter is given by a modified version of equation 1
 
 \begin{equation}
-	F_{EJ} = -\frac{GM_{E}M_{J}}{r_{2}}\uvec{r}
+	F_{EJ} = -\frac{G\earthmass \jupitermass}{d^{2}}\uvec{d} = -\frac{G\earthmass \jupitermass \vvec{d}}{d^{3}}
 	\label{eq:force_earth_jupiter}
 \end{equation}
 
-where $r$ is now the distance between the Earth and Jupiter and $\uvec{r}$ is the unit vector pointing from the Earth to Jupiter.
+where $d$ is the distance between the Earth and Jupiter , $\jupitermass$ the mass of Jupiter and $\uvec{d}$ is the unit vector pointing from the Earth to Jupiter and $\vvec{d}$ the position vector from the Earth to Jupiter. With the inclusion of Jupiter, equations \ref{eq:accelx}  and \ref{eq:accely} for the Earth position $x_{E}, y_{E}$ and solar radius $r_{E}$then become
+
+\ndoubleequation[eq:accelx2E,eq:accely2E]{\diff[2]{x_{E}}{t} = -\frac{G\solarmass x_{E}}{r_{E}^3} - \frac{G\jupitermass \vvec{d_{x}}}{d^3}}{\hspace{50pt}\diff[2]{y_{E}}{t} = -\frac{G\solarmass y_{E}}{r_{E}^3} -\frac{G\jupitermass \vvec{d_{y}}}{d^3}}
+
+and for the Jupiter position $x_{J}, y_{J}$ and solar radius $r_{J}$
+
+\ndoubleequation[eq:accelx2J,eq:accely2J]{\diff[2]{x_{J}}{t} = -\frac{G\solarmass x_{J}}{r_{J}^3} + \frac{G\earthmass \vvec{d_{x}}}{d^3}}{\hspace{50pt}\diff[2]{y_{J}}{t} = -\frac{G\solarmass y_{J}}{r_{J}^3} + \frac{G\earthmass \vvec{d_{y}}}{d^3}}
+
+Transforming these four second order differential equations into first order differential equations to solve numerically gives
+
+\vspace{30pt}
+
+\ndoubleequation[eq:vxE,eq:vyE]{\diff{x_{E}}{t} = v_{x_{E}}}{\diff{y_{E}}{t} = v_{y_{E}}}
+
+\ndoubleequation[eq:axE,eq:ayE]{a_{x_{E}} = \diff{v_{x_{E}}}{t} = -\frac{G\solarmass x_{E}}{r_{E}^3} - \frac{G\jupitermass \vvec{d_{x}}}{d^3}}{\hspace{40pt}a_{y_{E}} = \diff{v_{y}}{t} =  -\frac{G\solarmass y_{E}}{r_{E}^3} - \frac{G\jupitermass \vvec{d_{y}}}{d^3}}
+
+\vspace{30pt}
+
+\ndoubleequation[eq:vxJ,eq:vyJ]{\diff{x_{J}}{t} = v_{x_{J}}}{\diff{y_{J}}{t} = v_{y_{J}}}
+
+\ndoubleequation[eq:axE,eq:ayE]{a_{x_{J}} = \diff{v_{x_{J}}}{t} = -\frac{G\solarmass x_{J}}{r_{J}^3} + \frac{G\jupitermass \vvec{d_{x}}}{d^3}}{\hspace{40pt} a_{y_{J}} = \diff{v_{y_{J}}}{t} =  -\frac{G\solarmass y_{J}}{r_{J}^3} + \frac{G\jupitermass \vvec{d_{y}}}{d^3}}
+
+\vspace{20pt}
+
+To implement this set of differential equations, a new state vector `Two\_State' was declared which holds 8 variables, namely the $x, y$ position and the velocity components $v_{x}, v_{y}$ of both the Earth and Jupiter. The function `JupiterEarthSystem' was then declared which implements the above differential equations outputting the new state vector, similarly to the `EarthOrbit' function. An RK4 step function, identical to the previous step function except to handle Two\_State vectors was declared. Running this step function in a loop then numerically solves this set of differential equations.
+
+\newpage
+
+\subsection{Results}
+The simulation was run for a simulated 12 years with a time step of a day. The initial positions of the Earth and Jupiter were set as as follows
+
+\begin{align*}
+	x_{0_{E}} &= 1 \, \text{AU}\\
+	y_{0_{E}} &= 0 \\[10pt]
+	x_{0_{J}} &= -5.2 \, \text{AU} \\
+	y_{0_{J}} &= 0 
+\end{align*}
+
+As in the previous section, the initial velocity of the Earth was set to the Keplarian velocity given by equation \ref{eq:Kepler}. The initial velocity of Jupiter was also set to the Keplarian velocity but in the negative y direction to ensure that both planets orbit in the anticlockwise direction as is the case in reality.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{Earth_Jupiter_Orbit}
+	\caption{The simulated orbit of both the Earth and Jupiter over a 24 year timescale with a step size of a day using the RK4 method.}
+	\label{gr:earth_and_jupiter}
+\end{figure}
+
+At the scale of figure \ref{gr:earth_and_jupiter}, the orbit of the Earth seems unaffected by the presence of Jupiter. In order to show Jupiter's affect, the radius of the Earth's orbit is plotted over time.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{Earth_Radius}
+	\caption{The radius of the Earth's orbit around the Sun over a 24 year timespan with the presence of Jupiter's orbit. The red lines denote the points where Jupiter completes one full orbit (12 years).}
+	\label{gr:earth radius}
+\end{figure}
+
+Figure \ref{gr:earth radius} shows the orbit of the Earth becoming more and less elliptical with a beating pattern period of 12 years, the period of Jupiter's orbit. \\
+
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{Earth_Energy}
+	\caption{The change in the total mechanical energy of Earth from the initial mechanical energy with time over a timespan of 24 years. }
+	\label{gr:Earth_Energy}
+\end{figure}
+
+Figure 9 shows the change in the total mechanical energy of the earth from its initial total mechanical energy with time. The change in energy was plotted as it was found that plotting the total energy with time showed artefacts in the plot due to the difference being too small for the plotting programme. This energy was calculated using equation \ref{eq:Earth_Energy} with the addition of the half the potential energy between the Earth and Jupiter given by
+
+\begin{equation}
+	U_{EJ} = -\frac{G\earthmass\jupitermass}{d}
+\end{equation}
+
+$d$ being the distance between Earth and Jupiter. The other half of this potential was added to the energy calculation for Jupiter.
+
+
+\newpage
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{Earth_Angular_Momentum}
+	\caption{The change in the angular momentum of Earth from the initial angular momentum with time over a timespan of 24 years.}
+	\label{gr:Earth L}
+\end{figure}
+
+To calculate the angular momentum of the Earth at a certain position, the position of the centre of mass $\boldmath{R}$ was found by the following equation
+
+\begin{equation}
+	\boldmath{R} = \frac{\earthmass r_{E} + \jupitermass r_{J}}{\earthmass + \jupitermass + \solarmass} 
+	\label{eq:com}
+\end{equation}
+
+This is assuming that the position of the Sun is fixed at the origin and hence $r_{\text{sun}} = 0$. The angular momentum $L$ was then calculated from 
+
+\begin{equation}
+	L = (\boldmath{R} - \boldmath{r_{E})} \times \boldmath{p}
+\end{equation}
+
+where $\boldmath{p}$ is the linear momentum of the Earth. 
+
+
+
+
+\newpage
+
+
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{Jupiter_Energy}
+	\caption{The change in the total mechanical energy of Jupiter from the initial mechanical energy with time over a timespan of 24 years.}
+	\label{gr:Jupiter energy}
+\end{figure}
+
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{Jupiter_Angular_Momentum}
+	\caption{The change in the angular momentum of Jupiter from the initial angular momentum with time over a timespan of 24 years.}
+	\label{gr:Jupiter L}
+\end{figure}
+
+The total mechanical energy and angular momentum of Jupiter was calculated in the same way as the Earth with the relevant substitutions for Jupiter.\\
+
+As Jupiter is much more massive than the Earth, it is expected that the percentage change in Jupiter's energy and angular momentum be much smaller than that of the Earth. From figure \ref{gr:Earth_Energy}, the change in the energy of the Earth was found to be approximately $\Delta E \approx -6.2 \times 10^{29} \unit{J}$. The initial total energy of the Earth was found to be $E_{0} = -2.56 \times 10 ^{33} \unit{J}$. This gives a percentage change $\delta E_{\text{Earth}}$ of 
+
+\begin{align*}
+	\delta E_{\text{Earth}} =  \frac{\Delta E}{E_{0}} = 2.4 \times 10 ^{-3} \% 
+\end{align*}
+
+Applying the same to Jupiter, the percentage change to Jupiter's total mechanical energy was found to be
+
+\begin{align}
+	\delta E_{\text{Jupiter}} = 9.88 \times 10^{-5} \%
+\end{align}
+
+Thus as expected the change to Jupiter's energy was much smaller than that of the Earth due to the much greater mass of Jupiter. A similar result was found for the angular momenta.
 
 
 

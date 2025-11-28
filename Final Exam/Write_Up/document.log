@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.23)  24 NOV 2025 16:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.23)  28 NOV 2025 00:53
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -689,31 +689,31 @@ LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Ccount=\count370
 \calc@Cskip=\skip62
 )
-Package hyperref Info: Option `colorlinks' set `false' on input line 31.
+Package hyperref Info: Option `colorlinks' set `false' on input line 32.
 Package translations Info: No language package found. I am going to use `englis
-h' as default language. on input line 86.
+h' as default language. on input line 89.
 
 (document.aux)
 \openout1 = `document.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -781,25 +781,25 @@ File: translations-basic-dictionary-english.trsl (english translation file `tra
 nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `english'. on input line 86.
+or `english'. on input line 89.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Info: Redefining \celsius on input line 86.
-Package gensymb Info: Faking symbols for \degree and \celsius on input line 86.
+LaTeX Info: Redefining \celsius on input line 89.
+Package gensymb Info: Faking symbols for \degree and \celsius on input line 89.
 
 
 
 Package gensymb Warning: Not defining \perthousand.
 
-LaTeX Info: Redefining \ohm on input line 86.
-Package gensymb Info: Using \Omega for \ohm on input line 86.
+LaTeX Info: Redefining \ohm on input line 89.
+Package gensymb Info: Using \Omega for \ohm on input line 89.
 
 Package gensymb Warning: Not defining \micro.
 
-Package hyperref Info: Link coloring OFF on input line 86.
+Package hyperref Info: Link coloring OFF on input line 89.
 (document.out) (document.out)
 \@outlinefile=\write4
 \openout4 = `document.out'.
@@ -814,146 +814,233 @@ Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
 [1
 
 {C:/Users/karlr/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+
+[2]
 \pydata@fh@0=\write5
 \openout5 = `_FDC3BDEFB79CEC8EB8211D2499E04704.data.minted'.
 
-runsystem(latexminted config  --timestamp 20251124161142Z FDC3BDEFB79CEC8EB8211
+runsystem(latexminted config  --timestamp 20251128005301Z FDC3BDEFB79CEC8EB8211
 D2499E04704)...executed.
 
-
-(_FDC3BDEFB79CEC8EB8211D2499E04704.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20251124161142Z FDC3BDEFB79CEC8E
+ (_FDC3BDEFB79CEC8EB8211D2499E04704.config.minted)
+runsystem(latexminted cleanconfig  --timestamp 20251128005301Z FDC3BDEFB79CEC8E
 B8211D2499E04704)...executed.
 
- (_minted/default.style.minted) (_minted/A080CC0576CEF4D0DF153A8A9C000BA2.highl
-ight.minted
+
+(_minted/default.style.minted)
+(_minted/A080CC0576CEF4D0DF153A8A9C000BA2.highlight.minted
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 2.
 )
 (_minted/7A375D50321EEF9013CD1BF57FA41A09.highlight.minted)
 
-[2]
-<Euler_Orbit.png, id=87, 859.5312pt x 852.5451pt>
+[3]
+<Euler_Orbit.png, id=95, 859.7721pt x 852.3042pt>
 File: Euler_Orbit.png Graphic file (type png)
 <use Euler_Orbit.png>
-Package pdftex.def Info: Euler_Orbit.png  used on input line 207.
-(pdftex.def)             Requested size: 429.76454pt x 426.27151pt.
+Package pdftex.def Info: Euler_Orbit.png  used on input line 221.
+(pdftex.def)             Requested size: 429.885pt x 426.15106pt.
 
 
-[3 <./Euler_Orbit.png>]
+[4 <./Euler_Orbit.png>]
 
-LaTeX Font Warning: Command \boldmath invalid in math mode on input line 232.
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 246.
 
 
-LaTeX Font Warning: Command \mathversion invalid in math mode on input line 232
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 246
 .
 
 
-LaTeX Font Warning: Command \boldmath invalid in math mode on input line 232.
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 246.
 
 
-LaTeX Font Warning: Command \mathversion invalid in math mode on input line 232
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 246
 .
 
 
-LaTeX Font Warning: Command \boldmath invalid in math mode on input line 232.
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 246.
 
 
-LaTeX Font Warning: Command \mathversion invalid in math mode on input line 232
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 246
 .
 
-LaTeX Font Info:    Calculating math sizes for size <> on input line 234.
+LaTeX Font Info:    Calculating math sizes for size <> on input line 248.
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <> not available
-(Font)              size <5> substituted on input line 234.
+(Font)              size <5> substituted on input line 248.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <0.7> not available
-(Font)              size <5> substituted on input line 234.
+(Font)              size <5> substituted on input line 248.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <0.5> not available
-(Font)              size <5> substituted on input line 234.
+(Font)              size <5> substituted on input line 248.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <> not available
-(Font)              size <5> substituted on input line 234.
+(Font)              size <5> substituted on input line 248.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <0.7> not available
-(Font)              size <5> substituted on input line 234.
+(Font)              size <5> substituted on input line 248.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <0.5> not available
-(Font)              size <5> substituted on input line 234.
+(Font)              size <5> substituted on input line 248.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <> not available
-(Font)              size <5> substituted on input line 234.
+(Font)              size <5> substituted on input line 248.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <0.7> not available
-(Font)              size <5> substituted on input line 234.
+(Font)              size <5> substituted on input line 248.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <0.5> not available
-(Font)              size <5> substituted on input line 234.
+(Font)              size <5> substituted on input line 248.
 
 
-LaTeX Font Warning: Command \boldmath invalid in math mode on input line 236.
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 250.
 
 
-LaTeX Font Warning: Command \mathversion invalid in math mode on input line 236
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 250
 .
 
 
-LaTeX Font Warning: Command \boldmath invalid in math mode on input line 239.
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 253.
 
 
-LaTeX Font Warning: Command \mathversion invalid in math mode on input line 239
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 253
 .
 
-<Euler_E_L.png, id=102, 736.4313pt x 401.0985pt>
+<Euler_E_L.png, id=110, 736.4313pt x 401.0985pt>
 File: Euler_E_L.png Graphic file (type png)
 <use Euler_E_L.png>
-Package pdftex.def Info: Euler_E_L.png  used on input line 245.
+Package pdftex.def Info: Euler_E_L.png  used on input line 259.
 (pdftex.def)             Requested size: 441.86218pt x 240.66095pt.
 
 
-[4 <./Euler_E_L.png>]
+[5 <./Euler_E_L.png>]
 (_minted/CA7CDA80E8778F9898508509D70B1699.highlight.minted)
 (_minted/CD125C288B2F5694A910A575208333B7.highlight.minted)
-<RK2_Orbit.png, id=115, 859.5312pt x 852.5451pt>
+<RK2_Orbit.png, id=123, 859.7721pt x 852.3042pt>
 File: RK2_Orbit.png Graphic file (type png)
 <use RK2_Orbit.png>
-Package pdftex.def Info: RK2_Orbit.png  used on input line 320.
-(pdftex.def)             Requested size: 300.84042pt x 298.39526pt.
+Package pdftex.def Info: RK2_Orbit.png  used on input line 334.
+(pdftex.def)             Requested size: 300.92474pt x 298.31094pt.
 
 
-[5]
-<RK4_Orbit.png, id=122, 859.5312pt x 852.5451pt>
+[6]
+<RK4_Orbit.png, id=130, 859.7721pt x 852.3042pt>
 File: RK4_Orbit.png Graphic file (type png)
 <use RK4_Orbit.png>
-Package pdftex.def Info: RK4_Orbit.png  used on input line 327.
-(pdftex.def)             Requested size: 300.84042pt x 298.39526pt.
-<Radius.png, id=124, 568.524pt x 407.3619pt>
+Package pdftex.def Info: RK4_Orbit.png  used on input line 341.
+(pdftex.def)             Requested size: 300.92474pt x 298.31094pt.
+<Radius.png, id=132, 568.524pt x 407.3619pt>
 File: Radius.png Graphic file (type png)
 <use Radius.png>
-Package pdftex.def Info: Radius.png  used on input line 335.
+Package pdftex.def Info: Radius.png  used on input line 349.
 (pdftex.def)             Requested size: 284.2613pt x 203.68044pt.
 
 
-[6 <./RK2_Orbit.png> <./RK4_Orbit.png>]
-<RK2_E_L.png, id=135, 736.4313pt x 401.0985pt>
+[7 <./RK2_Orbit.png> <./RK4_Orbit.png>]
+<RK2_E_L.png, id=144, 736.4313pt x 401.0985pt>
 File: RK2_E_L.png Graphic file (type png)
 <use RK2_E_L.png>
-Package pdftex.def Info: RK2_E_L.png  used on input line 346.
+Package pdftex.def Info: RK2_E_L.png  used on input line 360.
 (pdftex.def)             Requested size: 441.86218pt x 240.66095pt.
 
 
-[7 <./Radius.png> <./RK2_E_L.png>]
+[8 <./Radius.png> <./RK2_E_L.png>]
 
-[8] (document.aux)
+[9]
+<Earth_Jupiter_Orbit.png, id=166, 412.9026pt x 405.1938pt>
+File: Earth_Jupiter_Orbit.png Graphic file (type png)
+<use Earth_Jupiter_Orbit.png>
+Package pdftex.def Info: Earth_Jupiter_Orbit.png  used on input line 425.
+(pdftex.def)             Requested size: 289.02985pt x 283.63373pt.
+<Earth_Radius.png, id=168, 917.3472pt x 407.3619pt>
+File: Earth_Radius.png Graphic file (type png)
+<use Earth_Radius.png>
+Package pdftex.def Info: Earth_Radius.png  used on input line 434.
+(pdftex.def)             Requested size: 458.67247pt x 203.68044pt.
+
+
+[10 <./Earth_Jupiter_Orbit.png>]
+<Earth_Energy.png, id=176, 904.3386pt x 407.8437pt>
+File: Earth_Energy.png Graphic file (type png)
+<use Earth_Energy.png>
+Package pdftex.def Info: Earth_Energy.png  used on input line 445.
+(pdftex.def)             Requested size: 452.1682pt x 203.92134pt.
+
+
+[11 <./Earth_Radius.png> <./Earth_Energy.png>]
+<Earth_Angular_Momentum.png, id=187, 916.3836pt x 407.8437pt>
+File: Earth_Angular_Momentum.png Graphic file (type png)
+<use Earth_Angular_Momentum.png>
+Package pdftex.def Info: Earth_Angular_Momentum.png  used on input line 463.
+(pdftex.def)             Requested size: 458.19069pt x 203.92134pt.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 468.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 468
+.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 471.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 471
+.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 478.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 478
+.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 478.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 478
+.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 478.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 478
+.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 481.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 481
+.
+
+
+
+[12 <./Earth_Angular_Momentum.png>]
+<Jupiter_Energy.png, id=197, 913.9746pt x 407.8437pt>
+File: Jupiter_Energy.png Graphic file (type png)
+<use Jupiter_Energy.png>
+Package pdftex.def Info: Jupiter_Energy.png  used on input line 493.
+(pdftex.def)             Requested size: 456.98618pt x 203.92134pt.
+<Jupiter_Angular_Momentum.png, id=198, 922.647pt x 407.8437pt>
+File: Jupiter_Angular_Momentum.png Graphic file (type png)
+<use Jupiter_Angular_Momentum.png>
+Package pdftex.def Info: Jupiter_Angular_Momentum.png  used on input line 502.
+(pdftex.def)             Requested size: 461.32237pt x 203.92134pt.
+
+
+[13 <./Jupiter_Energy.png> <./Jupiter_Angular_Momentum.png>] (document.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-30>
@@ -964,37 +1051,40 @@ LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 4.5pt have occurred.
 
 Package rerunfilecheck Info: File `document.out' has not changed.
-(rerunfilecheck)             Checksum: F71DDA937C97963A357C96CCA3268ABE;1583.
+(rerunfilecheck)             Checksum: FEC16A756A569BC8BB881E3A52D79445;1676.
  ) 
 Here is how much of TeX's memory you used:
- 23039 strings out of 473898
- 486259 string characters out of 5726479
- 968501 words of memory out of 5000000
- 45578 multiletter control sequences out of 15000+600000
+ 23134 strings out of 473898
+ 488458 string characters out of 5726479
+ 968567 words of memory out of 5000000
+ 45657 multiletter control sequences out of 15000+600000
  569602 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 79i,10n,93p,869b,959s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 79i,11n,93p,869b,959s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/karlr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmbsy10.pfb><C:/Users/karlr/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
-sfonts/cm/cmbx10.pfb><C:/Users/karlr/AppData/Local/Programs/MiKTeX/fonts/type1/
-public/amsfonts/cm/cmbx12.pfb><C:/Users/karlr/AppData/Local/Programs/MiKTeX/fon
-ts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/karlr/AppData/Local/Programs/M
-iKTeX/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/Users/karlr/AppData/Local/
-Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/karlr/AppDa
-ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/kar
-lr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:
-/Users/karlr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/
-cmmib8.pfb><C:/Users/karlr/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
-fonts/cm/cmr10.pfb><C:/Users/karlr/AppData/Local/Programs/MiKTeX/fonts/type1/pu
-blic/amsfonts/cm/cmr12.pfb><C:/Users/karlr/AppData/Local/Programs/MiKTeX/fonts/
-type1/public/amsfonts/cm/cmr6.pfb><C:/Users/karlr/AppData/Local/Programs/MiKTeX
-/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/karlr/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/karlr/AppData/Local
-/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/karlr/AppDa
-ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on document.pdf (8 pages, 1853672 bytes).
+sfonts/cmextra/cmbsy8.pfb><C:/Users/karlr/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmbx10.pfb><C:/Users/karlr/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/karlr/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/karlr/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/Users/karlr/
+AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Use
+rs/karlr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb
+><C:/Users/karlr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/c
+mmi8.pfb><C:/Users/karlr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
+nts/cm/cmmib10.pfb><C:/Users/karlr/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/amsfonts/cmextra/cmmib8.pfb><C:/Users/karlr/AppData/Local/Programs/MiKTeX/
+fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/karlr/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/karlr/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/karlr/AppData
+/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/karlr/
+AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Use
+rs/karlr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb
+><C:/Users/karlr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/c
+mtt10.pfb>
+Output written on document.pdf (13 pages, 4425796 bytes).
 PDF statistics:
- 233 PDF objects out of 1000 (max. 8388607)
- 43 named destinations out of 1000 (max. 500000)
- 119 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 299 PDF objects out of 1000 (max. 8388607)
+ 59 named destinations out of 1000 (max. 500000)
+ 157 words of extra memory for PDF output out of 10000 (max. 10000000)
 

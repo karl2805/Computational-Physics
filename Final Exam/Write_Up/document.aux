@@ -4,41 +4,56 @@
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \providecommand \oddpage@label [2]{}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}Orbit of Earth Around the Sun}{1}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Mathematical Analysis}{1}{subsection.2.1}\protected@file@percent }
-\newlabel{eq:Newton's Law of Gravitation}{{1}{1}{Mathematical Analysis}{equation.2.1}{}}
-\newlabel{eq:Accelleration of the Earth}{{2}{1}{Mathematical Analysis}{equation.2.2}{}}
-\newlabel{eq:accelx}{{3}{1}{Mathematical Analysis}{equation.2.3}{}}
-\newlabel{eq:accely}{{4}{1}{Mathematical Analysis}{equation.2.4}{}}
-\newlabel{eq:vx}{{5}{1}{Mathematical Analysis}{equation.2.5}{}}
-\newlabel{eq:vy}{{6}{1}{Mathematical Analysis}{equation.2.6}{}}
-\newlabel{eq:ax}{{7}{1}{Mathematical Analysis}{equation.2.7}{}}
-\newlabel{eq:ay}{{8}{1}{Mathematical Analysis}{equation.2.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Euler Method}{2}{subsection.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}Implementation}{2}{subsubsection.2.2.1}\protected@file@percent }
-\newlabel{eq:diff_form}{{9}{2}{Implementation}{equation.2.9}{}}
-\newlabel{eq:Euler Method}{{10}{2}{Implementation}{equation.2.10}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}Results}{3}{subsubsection.2.2.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The Euler integration method performed for 3 different step sizes over a simulated time of 5 years. The Earth's initial position was set to 1 AU to the right of Sun which is represented by the yellow circle in each plot. The initial velocity was set the the Keplerian velocity}}{3}{figure.caption.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Orbit of Earth Around the Sun}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Mathematical Analysis}{2}{subsection.2.1}\protected@file@percent }
+\newlabel{eq:Newton's Law of Gravitation}{{1}{2}{Mathematical Analysis}{equation.2.1}{}}
+\newlabel{eq:Accelleration of the Earth}{{2}{2}{Mathematical Analysis}{equation.2.2}{}}
+\newlabel{eq:accelx}{{3}{2}{Mathematical Analysis}{equation.2.3}{}}
+\newlabel{eq:accely}{{4}{2}{Mathematical Analysis}{equation.2.4}{}}
+\newlabel{eq:vx}{{5}{2}{Mathematical Analysis}{equation.2.5}{}}
+\newlabel{eq:vy}{{6}{2}{Mathematical Analysis}{equation.2.6}{}}
+\newlabel{eq:ax}{{7}{2}{Mathematical Analysis}{equation.2.7}{}}
+\newlabel{eq:ay}{{8}{2}{Mathematical Analysis}{equation.2.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Euler Method}{3}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}Implementation}{3}{subsubsection.2.2.1}\protected@file@percent }
+\newlabel{eq:diff_form}{{9}{3}{Implementation}{equation.2.9}{}}
+\newlabel{eq:Euler Method}{{10}{3}{Implementation}{equation.2.10}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}Results}{4}{subsubsection.2.2.2}\protected@file@percent }
+\newlabel{eq:Kepler}{{11}{4}{Results}{equation.2.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The Euler integration method performed for 3 different step sizes over a simulated time of 5 years. The Earth's initial position was set to 1 AU to the right of Sun which is represented by the yellow circle in each plot. The initial velocity was set the the Keplerian velocity}}{4}{figure.caption.1}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{gr:Euler_Earth}{{1}{3}{The Euler integration method performed for 3 different step sizes over a simulated time of 5 years. The Earth's initial position was set to 1 AU to the right of Sun which is represented by the yellow circle in each plot. The initial velocity was set the the Keplerian velocity}{figure.caption.1}{}}
-\newlabel{eq:Earth_Energy}{{13}{4}{Results}{equation.2.13}{}}
-\newlabel{eq:Earth_L}{{14}{4}{Results}{equation.2.14}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Plots of the total energy and angular momentum of the system with time for the Euler method over a simulated time of 5 years with a step size of a day.}}{4}{figure.caption.2}\protected@file@percent }
-\newlabel{gr:Energy_L_Euler}{{2}{4}{Plots of the total energy and angular momentum of the system with time for the Euler method over a simulated time of 5 years with a step size of a day}{figure.caption.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Runge-Kutta Methods}{5}{subsection.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.1}RK2 (Ralston's method)}{5}{subsubsection.2.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.2}RK4 Method}{5}{subsubsection.2.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.3}Results}{6}{subsubsection.2.3.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Earth's orbit simulation using the RK2 method over a simulation time of 5 years with three different step sizes. This method is still unstable for these time steps as can be seen, but is slightly better than the previous Euler method as will be discussed later.}}{6}{figure.caption.3}\protected@file@percent }
-\newlabel{gr:RK2_Orbit}{{3}{6}{Earth's orbit simulation using the RK2 method over a simulation time of 5 years with three different step sizes. This method is still unstable for these time steps as can be seen, but is slightly better than the previous Euler method as will be discussed later}{figure.caption.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Earth's orbit simulation using the RK4 method over a simulation time of 5 years with three different step sizes. This is the first method to give stable orbits for each time step.}}{6}{figure.caption.4}\protected@file@percent }
-\newlabel{RK4_Orbit}{{4}{6}{Earth's orbit simulation using the RK4 method over a simulation time of 5 years with three different step sizes. This is the first method to give stable orbits for each time step}{figure.caption.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces The evolution of the radius of the orbit of Earth with time for each integration method.}}{7}{figure.caption.5}\protected@file@percent }
-\newlabel{gr:Radius}{{5}{7}{The evolution of the radius of the orbit of Earth with time for each integration method}{figure.caption.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces The energy and angular momentum evolution of the Earth for each method over a timespan of 5 years with a step size of a day.}}{7}{figure.caption.6}\protected@file@percent }
-\newlabel{gr:Comparing_E_L}{{6}{7}{The energy and angular momentum evolution of the Earth for each method over a timespan of 5 years with a step size of a day}{figure.caption.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Orbit of Earth and Jupiter}{8}{section.3}\protected@file@percent }
-\newlabel{eq:force_earth_jupiter}{{17}{8}{Orbit of Earth and Jupiter}{equation.3.17}{}}
+\newlabel{gr:Euler_Earth}{{1}{4}{The Euler integration method performed for 3 different step sizes over a simulated time of 5 years. The Earth's initial position was set to 1 AU to the right of Sun which is represented by the yellow circle in each plot. The initial velocity was set the the Keplerian velocity}{figure.caption.1}{}}
+\newlabel{eq:Earth_Energy}{{13}{5}{Results}{equation.2.13}{}}
+\newlabel{eq:Earth_L}{{14}{5}{Results}{equation.2.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Plots of the total energy and angular momentum of the system with time for the Euler method over a simulated time of 5 years with a step size of a day.}}{5}{figure.caption.2}\protected@file@percent }
+\newlabel{gr:Energy_L_Euler}{{2}{5}{Plots of the total energy and angular momentum of the system with time for the Euler method over a simulated time of 5 years with a step size of a day}{figure.caption.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Runge-Kutta Methods}{6}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.1}RK2 (Ralston's method)}{6}{subsubsection.2.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.2}RK4 Method}{6}{subsubsection.2.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.3}Results}{7}{subsubsection.2.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Earth's orbit simulation using the RK2 method over a simulation time of 5 years with three different step sizes. This method is still unstable for these time steps as can be seen, but is slightly better than the previous Euler method as will be discussed later.}}{7}{figure.caption.3}\protected@file@percent }
+\newlabel{gr:RK2_Orbit}{{3}{7}{Earth's orbit simulation using the RK2 method over a simulation time of 5 years with three different step sizes. This method is still unstable for these time steps as can be seen, but is slightly better than the previous Euler method as will be discussed later}{figure.caption.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Earth's orbit simulation using the RK4 method over a simulation time of 5 years with three different step sizes. This is the first method to give stable orbits for each time step.}}{7}{figure.caption.4}\protected@file@percent }
+\newlabel{RK4_Orbit}{{4}{7}{Earth's orbit simulation using the RK4 method over a simulation time of 5 years with three different step sizes. This is the first method to give stable orbits for each time step}{figure.caption.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces The evolution of the radius of the orbit of Earth with time for each integration method.}}{8}{figure.caption.5}\protected@file@percent }
+\newlabel{gr:Radius}{{5}{8}{The evolution of the radius of the orbit of Earth with time for each integration method}{figure.caption.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces The energy and angular momentum evolution of the Earth for each method over a timespan of 5 years with a step size of a day.}}{8}{figure.caption.6}\protected@file@percent }
+\newlabel{gr:Comparing_E_L}{{6}{8}{The energy and angular momentum evolution of the Earth for each method over a timespan of 5 years with a step size of a day}{figure.caption.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Orbit of Earth and Jupiter}{9}{section.3}\protected@file@percent }
+\newlabel{eq:force_earth_jupiter}{{17}{9}{Orbit of Earth and Jupiter}{equation.3.17}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Results}{10}{subsection.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces The simulated orbit of both the Earth and Jupiter over a 24 year timescale with a step size of a day using the RK4 method.}}{10}{figure.caption.7}\protected@file@percent }
+\newlabel{gr:earth_and_jupiter}{{7}{10}{The simulated orbit of both the Earth and Jupiter over a 24 year timescale with a step size of a day using the RK4 method}{figure.caption.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces The radius of the Earth's orbit around the Sun over a 24 year timespan with the presence of Jupiter's orbit. The red lines denote the points where Jupiter completes one full orbit (12 years).}}{11}{figure.caption.8}\protected@file@percent }
+\newlabel{gr:earth radius}{{8}{11}{The radius of the Earth's orbit around the Sun over a 24 year timespan with the presence of Jupiter's orbit. The red lines denote the points where Jupiter completes one full orbit (12 years)}{figure.caption.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces The change in the total mechanical energy of Earth from the initial mechanical energy with time over a timespan of 24 years. }}{11}{figure.caption.9}\protected@file@percent }
+\newlabel{gr:Earth_Energy}{{9}{11}{The change in the total mechanical energy of Earth from the initial mechanical energy with time over a timespan of 24 years}{figure.caption.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces The change in the angular momentum of Earth from the initial angular momentum with time over a timespan of 24 years.}}{12}{figure.caption.10}\protected@file@percent }
+\newlabel{gr:Earth L}{{10}{12}{The change in the angular momentum of Earth from the initial angular momentum with time over a timespan of 24 years}{figure.caption.10}{}}
+\newlabel{eq:com}{{19}{12}{Results}{equation.3.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces The change in the total mechanical energy of Jupiter from the initial mechanical energy with time over a timespan of 24 years.}}{13}{figure.caption.11}\protected@file@percent }
+\newlabel{gr:Jupiter energy}{{11}{13}{The change in the total mechanical energy of Jupiter from the initial mechanical energy with time over a timespan of 24 years}{figure.caption.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces The change in the angular momentum of Jupiter from the initial angular momentum with time over a timespan of 24 years.}}{13}{figure.caption.12}\protected@file@percent }
+\newlabel{gr:Jupiter L}{{12}{13}{The change in the angular momentum of Jupiter from the initial angular momentum with time over a timespan of 24 years}{figure.caption.12}{}}
 \xdef \mintedoldcachechecksum{\detokenize{73A748DC13DC4564BC16DD945766F422:5}}
-\gdef \@abspage@last{8}
+\gdef \@abspage@last{13}
